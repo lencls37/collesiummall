@@ -18,7 +18,7 @@ if (empty($_GET['id'])) {
     }
 
 
-    $stmt = $conn->prepare("SELECT * FROM magazalar");
+    $stmt = $conn->prepare("SELECT * FROM magaza WHERE id='" . $_GET['id'] . "';");
     $stmt->execute();
 
 // set the resulting array to associative
