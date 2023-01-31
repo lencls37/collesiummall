@@ -115,7 +115,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="slider-img-1">Slider Resimleri (Maksimum 12)</label>
-                                <input type="file" class="form-control-file" id="slider_img_1" name="slider_img_1" multiple>
+                                <input type="file" class="form-control-file" id="slider_img_1" name="slider_img_1[]" multiple>
                                 <input type="text" class="form-control" id="slider_text_1" name="slider_text_1" placeholder="Açıklama" style="margin-top: 20px;">
                             </div>
                         </div>
