@@ -32,33 +32,10 @@ $mail = !empty($_POST['mail']) ? $_POST['mail'] : null;
 $website = !empty($_POST['website']) ? $_POST['website'] : null;
 $konsept_yazi = !empty($_POST['konsept_yazi']) ? $_POST['konsept_yazi'] : null;
 
-
-
-global $slider_img_1, $slider_img_2, $slider_img_3, $slider_img_4, $slider_img_5, $slider_img_6, $slider_img_7, $slider_img_8, $slider_img_9;
-global $slider_img_10, $slider_img_11, $slider_img_12;
-
-$slider_text_1 = !empty($_POST['slider_text_1']) ?? $_POST['slider_text_1'];
-$slider_text_2 = !empty($_POST['slider_text_2']) ?? $_POST['slider_text_2'];
-$slider_text_3 = !empty($_POST['slider_text_3']) ?? $_POST['slider_text_3'];
-$slider_text_4 = !empty($_POST['slider_text_4']) ?? $_POST['slider_text_4'];
-$slider_text_5 = !empty($_POST['slider_text_5']) ?? $_POST['slider_text_5'];
-$slider_text_6 = !empty($_POST['slider_text_6']) ?? $_POST['slider_text_6'];
-$slider_text_7 = !empty($_POST['slider_text_7']) ?? $_POST['slider_text_7'];
-$slider_text_8 = !empty($_POST['slider_text_8']) ?? $_POST['slider_text_8'];
-$slider_text_9 = !empty($_POST['slider_text_9']) ?? $_POST['slider_text_9'];
-$slider_text_10 = !empty($_POST['slider_text_10']) ?? $_POST['slider_text_10'];
-$slider_text_11 = !empty($_POST['slider_text_11']) ?? $_POST['slider_text_11'];
-$slider_text_12 = !empty($_POST['slider_text_12']) ?? $_POST['slider_text_12'];
-
 try {
     // Veritabanı Bağlantısı
     global $conn;
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    // Verileri Filtrele
-//    $deger1 = filter_var($_POST['deger1'], FILTER_SANITIZE_STRING);
-//    $deger2 = filter_var($_POST['deger2'], FILTER_SANITIZE_EMAIL);
-//    $deger3 = filter_var($_POST['deger3'], FILTER_SANITIZE_NUMBER_INT);
-
 
     // Prepare Statement
     $stmt = $conn->prepare("INSERT INTO `magaza`(`magaza_adi`, `instagram_url`, `instagram_kullanici_adi`,
@@ -132,7 +109,6 @@ try {
         } else {
             $dosya = null;
             $stmt->bindParam(':slider_img_' . $i+1, $dosya,PDO::PARAM_NULL);
-
         }
     }
     $logo = null;
@@ -141,6 +117,7 @@ try {
 
 
     $stmt->execute();
+    $stmt->debugDumpParams();
     // Execute Statement
     $response = array(
         "status" => "success",
@@ -157,6 +134,6 @@ try {
 }
 
 // Return Response
-header("Content-Type: application/json");
-echo json_encode($response);
+//header("Content-Type: application/json");
+//echo json_encode($response);
 ?>
