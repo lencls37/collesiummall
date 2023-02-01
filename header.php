@@ -34,7 +34,7 @@
                                 <li>
                                     <a href="index.php">Anasayfa</a>
                                     <!--                                            <ul>-->
-                                    <!--                                                <li><a href="02-index.html">Fullscreen Slider</a></li>-->
+                                    <!--                                                <li><a href="02-index.php">Fullscreen Slider</a></li>-->
                                     <!--                                                <li><a href="anasayfa.html">Fullscreen Slider 2</a></li>-->
                                     <!--                                                <li><a href="02-index-slider-3.html">Fullscreen Slider 3</a></li>-->
                                     <!--                                                <li><a href="02-index-full-page.html">Full Page</a></li>-->
@@ -90,7 +90,7 @@
 
                     <div class="pt80 pb80">
                         <div class="mo-nav text-center">
-                            <a href="kullanılmıyor/02-index.html">
+                            <a href="kullanılmıyor/02-index.php">
                                 <img class="logo" src="images/logo.png" alt="">
                             </a>
 
@@ -101,7 +101,7 @@
                                 <li>
                                     Home
                                     <ul>
-                                        <li><a href="kullanılmıyor/02-index.html">Fullscreen Slider</a></li>
+                                        <li><a href="kullanılmıyor/02-index.php">Fullscreen Slider</a></li>
                                         <li><a href="index.php">Fullscreen Slider 2</a></li>
                                         <li><a href="kullanılmıyor/02-index-slider-3.html">Fullscreen Slider 3</a></li>
                                         <li><a href="kullanılmıyor/02-index-full-page.html">Full Page</a></li>

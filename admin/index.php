@@ -53,7 +53,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <div class="text-center justify-content-center d-flex">
-            <a href="index.html" class="brand-link">
+            <a href="index.php" class="brand-link">
                 <img class="w-75" src="../images/logo.png" style="margin: 10px;">
             </a>
         </div>
@@ -101,12 +101,12 @@
                                     <p>Mağaza Ekle</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="index.php?sayfa=magaza_duzenle" class="nav-link">
-                                    <i class="fas fa-edit nav-icon"></i>
-                                    <p>Mağaza Düzenle</p>
-                                </a>
-                            </li>
+<!--                            <li class="nav-item">-->
+<!--                                <a href="index.php?sayfa=magaza_duzenle" class="nav-link">-->
+<!--                                    <i class="fas fa-edit nav-icon"></i>-->
+<!--                                    <p>Mağaza Düzenle</p>-->
+<!--                                </a>-->
+<!--                            </li>-->
                             <li class="nav-item">
                                 <a href="index.php?sayfa=magaza_liste" class="nav-link">
                                     <i class="fas fa-list nav-icon"></i>
@@ -168,6 +168,9 @@
                         break;
                     case "magaza_liste":
                         include("sayfa/magaza_listele.php");
+                        break;
+                    case "magaza_sil":
+                        include("api/magaza_sil.php");
                         break;
                     case "yazi_ekle":
                         include("sayfa/yazi_ekle.php");

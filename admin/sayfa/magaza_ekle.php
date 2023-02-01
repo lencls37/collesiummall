@@ -1,7 +1,7 @@
 <div class="container" style="padding-top: 50px;">
     <div class="row">
         <div class="col-12 col-sm-12 col-lg-12 col-md-12 col-xl-12">
-            <form id="magaza_ekle_form" enctype="multipart/form-data" method="post" action="/admin/api/magaza_ekle.php">
+            <form id="magaza_ekle_form" enctype="multipart/form-data" method="post" action="/test/admin/api/magaza_ekle.php">
                 <div class="container">
                     <div class="row">
                         <div class="col-6">
@@ -46,10 +46,16 @@
                                 <input type="text" class="form-control" id="telefon" name="telefon" placeholder="+90 555 555 5555">
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-3">
                             <div class="form-group">
-                                <label for="store-address">KAT VE NUMARA</label>
-                                <input type="text" class="form-control" id="kat_ve_numara" name="kat_ve_numara" required placeholder="Kat 3 No 129">
+                                <label for="store-address">KAT</label>
+                                <input type="text" class="form-control" id="kat" name="kat" required placeholder="-1">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="store-address">DÜKKAN NO</label>
+                                <input type="text" class="form-control" id="no" name="no" required placeholder="120">
                             </div>
                         </div>
                         <div class="col-6">
