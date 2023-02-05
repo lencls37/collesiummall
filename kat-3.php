@@ -1,3 +1,17 @@
+<?php
+try {
+    $conn = new PDO("mysql:host=localhost;dbname=collesiummall_db", "collesiummall_admin", "*904f_Sj!8AqSxBP");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query("SET CHARACTER SET utf8");
+    $stmt = $conn->prepare("SELECT * FROM `magaza` WHERE `kat`='-3' ORDER BY `magaza`.`no` ASC");
+    $stmt->execute();
+
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll();
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+//?>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -24,7 +38,7 @@
 
 <?php include "header.php" ?>
 
-<div id="background" data-bgimage="url(images/background/bg6.jpg) fixed"></div>
+<div id="background" data-bgimage="url(resim/kat/collesiummall-Kat-3.jpg) fixed"></div>
 <div class='slider-overlay' style="position: fixed !important;top: 0; left: 0;"></div>
 <div id="content-absolute">
 
@@ -43,278 +57,24 @@
     <section id="section-main" class="no-bg no-top" aria-label="section-menu">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-4">
+                <?php
+                foreach ($result as $item){
+                    echo '<div class="col-lg-4 text-center">
                     <div class="de-room">
-                        <div class="d-image">
-<!--                            <div class="d-label">only 2 room left</div>-->
-<!--                            <div class="d-details">-->
-<!--                                        <span class="d-meta-1">-->
-<!--                                            <img src="images/ui/user.svg" alt="">2 Guests-->
-<!--                                        </span>-->
-<!--                                <span class="d-meta-2">-->
-<!--                                            <img src="images/ui/floorplan.svg" alt="">30 ft-->
-<!--                                        </span>-->
-<!--                            </div>-->
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
+                        <div class="d-image" style="max-width: 390px !important; max-height: 390px !important;margin-left: auto;margin-right: auto;">
+                            <a href="magaza_detay.php?id='.$item['id'].'">
+                                <img src="'.$item['logo'].'" class="img-fluid" alt="Vitrin Görsel" style="width: 390px;height: 390px;object-fit: cover;">
+                                <img src="resim/magazalar/2.webp" class="d-img-hover img-fluid" alt="Collesium Mall" style="width: 390px;height: 390px;object-fit: cover;">
                             </a>
                         </div>
 
-                        <div class="d-text">
-                            <h3>SOFRADAN</h3>
-<!--                            <p>Most hotels and major hospitality companies have set industry standards to classify hotel-->
-<!--                                types. An upscale full-service hotel facility offers luxury...</p>-->
+                        <div class="d-text" style="max-width: 390px;margin-left: auto;margin-right: auto;">
+                            <h3>'.$item['magaza_adi'].'</h3>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-<!--                            <div class="d-label">only 1 room left</div>-->
-<!--                            <div class="d-details">-->
-<!--                                        <span class="d-meta-1">-->
-<!--                                            <img src="images/ui/user.svg" alt="">2 Guests-->
-<!--                                        </span>-->
-<!--                                <span class="d-meta-2">-->
-<!--                                            <img src="images/ui/floorplan.svg" alt="">35 ft-->
-<!--                                        </span>-->
-<!--                            </div>-->
-                            <a href="magaza_detay.php">
-                                <img src="images/room/2.jpg" class="img-fluid" alt="">
-                                <img src="images/room/2-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>BOGOTA</h3>
-<!--                            <p>Most hotels and major hospitality companies have set industry standards to classify hotel-->
-<!--                                types. An upscale full-service hotel facility offers luxury...</p>-->
-<!--                            <a href="kullanılmıyor/02-room-single.html" class="btn-line"><span>Book Now For $39</span></a>-->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-<!--                            <div class="d-label">only 3 room left</div>-->
-<!--                            <div class="d-details">-->
-<!--                                        <span class="d-meta-1">-->
-<!--                                            <img src="images/ui/user.svg" alt="">2 Guests-->
-<!--                                        </span>-->
-<!--                                <span class="d-meta-2">-->
-<!--                                            <img src="images/ui/floorplan.svg" alt="">40 ft-->
-<!--                                        </span>-->
-<!--                            </div>-->
-                            <a href="magaza_detay.php">
-                                <img src="images/room/3.jpg" class="img-fluid" alt="">
-                                <img src="images/room/3-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>X LAV</h3>
-<!--                            <p>Most hotels and major hospitality companies have set industry standards to classify hotel-->
-<!--                                types. An upscale full-service hotel facility offers luxury...</p>-->
-<!--                            <a href="kullanılmıyor/02-room-single.html" class="btn-line"><span>Book Now For $49</span></a>-->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-<!--                            <div class="d-label">only 2 room left</div>-->
-<!--                            <div class="d-details">-->
-<!--                                        <span class="d-meta-1">-->
-<!--                                            <img src="images/ui/user.svg" alt="">4 Guests-->
-<!--                                        </span>-->
-<!--                                <span class="d-meta-2">-->
-<!--                                            <img src="images/ui/floorplan.svg" alt="">60 ft-->
-<!--                                        </span>-->
-<!--                            </div>-->
-                            <a href="magaza_detay.php">
-                                <img src="images/room/4.jpg" class="img-fluid" alt="">
-                                <img src="images/room/4-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>LABOUM</h3>
-<!--                            <p>Most hotels and major hospitality companies have set industry standards to classify hotel-->
-<!--                                types. An upscale full-service hotel facility offers luxury...</p>-->
-<!--                            <a href="kullanılmıyor/02-room-single.html" class="btn-line"><span>Book Now For $59</span></a>-->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-<!--                            <div class="d-label">only 2 room left</div>-->
-<!--                            <div class="d-details">-->
-<!--                                        <span class="d-meta-1">-->
-<!--                                            <img src="images/ui/user.svg" alt="">4 Guests-->
-<!--                                        </span>-->
-<!--                                <span class="d-meta-2">-->
-<!--                                            <img src="images/ui/floorplan.svg" alt="">70 ft-->
-<!--                                        </span>-->
-<!--                            </div>-->
-                            <a href="magaza_detay.php">
-                                <img src="images/room/5.jpg" class="img-fluid" alt="">
-                                <img src="images/room/5-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>RE-START-48</h3>
-<!--                            <p>Most hotels and major hospitality companies have set industry standards to classify hotel-->
-<!--                                types. An upscale full-service hotel facility offers luxury...</p>-->
-<!--                            <a href="kullanılmıyor/02-room-single.html" class="btn-line"><span>Book Now For $79</span></a>-->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/room/6.jpg" class="img-fluid" alt="">
-                                <img src="images/room/6-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>LEGEND CLUB</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/room/6.jpg" class="img-fluid" alt="">
-                                <img src="images/room/6-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>ARES</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/room/6.jpg" class="img-fluid" alt="">
-                                <img src="images/room/6-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>NEW PREMIUM</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/room/6.jpg" class="img-fluid" alt="">
-                                <img src="images/room/6-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>MORRIS</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/room/6.jpg" class="img-fluid" alt="">
-                                <img src="images/room/6-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>FINGERLESS</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/room/6.jpg" class="img-fluid" alt="">
-                                <img src="images/room/6-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>SPORT</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/room/6.jpg" class="img-fluid" alt="">
-                                <img src="images/room/6-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>PLUS ONE</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/room/6.jpg" class="img-fluid" alt="">
-                                <img src="images/room/6-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>LUKAS JACOBZ</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/room/6.jpg" class="img-fluid" alt="">
-                                <img src="images/room/6-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>MAZEL</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/room/6.jpg" class="img-fluid" alt="">
-                                <img src="images/room/6-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>HONEST</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/room/6.jpg" class="img-fluid" alt="">
-                                <img src="images/room/6-alt.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>AURAMAN</h3>
-                        </div>
-                    </div>
-                </div>
+                </div>';
+                }
+                ?>
             </div>
         </div>
     </section>

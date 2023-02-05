@@ -43,24 +43,24 @@ $website = !empty($_POST['website']) ? $_POST['website']: null;
 $konsept_yazi = !empty($_POST['konsept_yazisi']) ? $_POST['konsept_yazisi']: null;
 try {
     $arr = Array('magaza_adi'=> $magaza_adi,
-    'instagram_url'=> "https://www.instagram.com/" . $instagram_kullanici_adi,
-    'instagram_kullanici_adi'=> $instagram_kullanici_adi,
-    'whatsapp_url'=> "https://wa.me/" . $whatsapp_numara,
-    'whatsapp_numara'=> $whatsapp_numara,
-    'telefon'=> $telefon,
-    'kat'=> $kat,
-    'no' => $no,
-    'facebook_url'=> "https://www.facebook.com/" . $facebbok_kullanici_adi,
-    'facebook_kullanici_adi'=> $facebbok_kullanici_adi,
-    'telegram_url'=> "https://www.telegram.me/" . $telegram_kullanici_adi,
-    'telegram_kullanci_adi'=> $telegram_kullanici_adi,
-    'tiktok_url'=> "https://www.tiktok.com/@" . $tiktok_kullanici_adi,
-    'tiktok_kullanici_adi'=> $tiktok_kullanici_adi,
-    'youtube_url'=> $youtube_url,
-    'youtube_kullanici_adi'=> $youtube_kullanici_adi,
-    'mail'=> $mail,
-    'website'=> $website,
-    'konsept_yazi'=> $konsept_yazi);
+        'instagram_url'=> "https://www.instagram.com/" . $instagram_kullanici_adi,
+        'instagram_kullanici_adi'=> $instagram_kullanici_adi,
+        'whatsapp_url'=> "https://wa.me/" . $whatsapp_numara,
+        'whatsapp_numara'=> $whatsapp_numara,
+        'telefon'=> $telefon,
+        'kat'=> $kat,
+        'no' => $no,
+        'facebook_url'=> "https://www.facebook.com/" . $facebbok_kullanici_adi,
+        'facebook_kullanici_adi'=> $facebbok_kullanici_adi,
+        'telegram_url'=> "https://www.telegram.me/" . $telegram_kullanici_adi,
+        'telegram_kullanci_adi'=> $telegram_kullanici_adi,
+        'tiktok_url'=> "https://www.tiktok.com/@" . $tiktok_kullanici_adi,
+        'tiktok_kullanici_adi'=> $tiktok_kullanici_adi,
+        'youtube_url'=> $youtube_url,
+        'youtube_kullanici_adi'=> $youtube_kullanici_adi,
+        'mail'=> $mail,
+        'website'=> $website,
+        'konsept_yazi'=> $konsept_yazi);
 
     global $sayi, $dosya;
     $dosya = null;
@@ -131,19 +131,14 @@ try {
             }
         }
     }catch (Exception $e){
-         $arr['logo'] = "Hata! : " . $e->getMessage();
+        $arr['logo'] = "Hata! : " . $e->getMessage();
     }
 
 
     //ÇALIŞTIR
     $db->insert("magaza",$arr);
     // Execute Statement
-//    $response = array(
-//        "status" => "error",
-//        "message" => "Mağaza ekleme başarılı."
-//    );
-//    header("Content-Type: text/html");
-//    echo json_encode($response);
+
     include "../sayfa/magaza_ekle_basarili.php";
 } catch (PDOException $e) {
     $response = array(

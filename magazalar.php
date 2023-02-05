@@ -24,7 +24,7 @@
 
         <?php include "header.php"?>
 
-        <div id="background" data-bgimage="url(images/background/bg6.jpg) fixed"></div>
+        <div id="background" data-bgimage="url(resim/slider/collesium-slide-magazalar.jpg) fixed"></div>
         <div class='slider-overlay' style="position: fixed !important;top: 0; left: 0;"></div>
         <div id="content-absolute">
 
@@ -47,8 +47,8 @@
                             <div class="de-room">
                                 <div class="d-image">
                                     <a href="kat0.php">
-                                        <img src="images/magazalar/kat0.jpg" class="img-fluid" alt="">
-                                        <img src="images/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
+                                        <img src="resim/magazalar/kat0.jpg" class="img-fluid" alt="">
+                                        <img src="resim/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="d-text">
@@ -61,8 +61,8 @@
                             <div class="de-room">
                                 <div class="d-image">
                                     <a href="kat3.php">
-                                        <img src="images/magazalar/kat3.jpg" class="img-fluid" alt="">
-                                        <img src="images/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
+                                        <img src="resim/magazalar/kat3.jpg" class="img-fluid" alt="">
+                                        <img src="resim/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="d-text">
@@ -75,8 +75,8 @@
                             <div class="de-room">
                                 <div class="d-image">
                                     <a href="kat2.php">
-                                        <img src="images/magazalar/kat2.jpg" class="img-fluid" alt="">
-                                        <img src="images/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
+                                        <img src="resim/magazalar/kat2.jpg" class="img-fluid" alt="">
+                                        <img src="resim/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="d-text">
@@ -89,8 +89,8 @@
                             <div class="de-room">
                                 <div class="d-image">
                                     <a href="kat1.php">
-                                        <img src="images/magazalar/kat1.jpg" class="img-fluid" alt="">
-                                        <img src="images/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
+                                        <img src="resim/magazalar/kat1.jpg" class="img-fluid" alt="">
+                                        <img src="resim/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="d-text">
@@ -103,8 +103,8 @@
                             <div class="de-room">
                                 <div class="d-image">
                                     <a href="kat-1.php">
-                                        <img src="images/magazalar/kat-1.jpg" class="img-fluid" alt="">
-                                        <img src="images/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
+                                        <img src="resim/magazalar/kat-1.jpg" class="img-fluid" alt="">
+                                        <img src="resim/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="d-text">
@@ -117,8 +117,8 @@
                             <div class="de-room">
                                 <div class="d-image">
                                     <a href="kat-2.php">
-                                        <img src="images/magazalar/kat-2.jpg" class="img-fluid" alt="">
-                                        <img src="images/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
+                                        <img src="resim/magazalar/kat-2.jpg" class="img-fluid" alt="">
+                                        <img src="resim/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="d-text">
@@ -131,8 +131,8 @@
                             <div class="de-room">
                                 <div class="d-image">
                                     <a href="kat-3.php">
-                                        <img src="images/magazalar/kat-3.jpg" class="img-fluid" alt="">
-                                        <img src="images/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
+                                        <img src="resim/magazalar/kat-3.jpg" class="img-fluid" alt="">
+                                        <img src="resim/magazalar/2.webp" class="d-img-hover img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="d-text">

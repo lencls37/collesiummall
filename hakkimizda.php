@@ -25,7 +25,7 @@
 <?php include "header.php" ?>
 
 
-<div id="background" data-bgimage="url(images/background/bg-hakkimizda.jpg) fixed"></div>
+<div id="background" data-bgimage="url(resim/slider/collesium-slide-hakkimizda.jpg) fixed"></div>
 <div class='slider-overlay' style="position: fixed !important;top: 0; left: 0;"></div>
 <div id="content-absolute">
 
@@ -46,11 +46,11 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 col-6">
                     <div class="spacer-double sm-hide"></div>
-                    <img src="images/misc/hakkimizda1.jpg" alt="" class="img-responsive wow fadeInUp" data-wow-duration="1s">
+                    <img src="resim/hakkimizda/collesiummall-hakkimizda1.jpg" alt="" class="img-responsive wow fadeInUp" data-wow-duration="1s">
                 </div>
 
                 <div class="col-lg-3 col-6">
-                    <img src="images/misc/hakkimizda2.jpg" alt="" class="img-responsive wow fadeInUp" data-wow-duration="1.5s">
+                    <img src="resim/hakkimizda/collesiummall-hakkimizda2.jpg" alt="" class="img-responsive wow fadeInUp" data-wow-duration="1.5s">
                 </div>
 
                 <div class="col-lg-6 wow fadeIn">

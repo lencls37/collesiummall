@@ -1,3 +1,19 @@
+<?php
+
+
+try {
+    $conn = new PDO("mysql:host=localhost;dbname=collesiummall_db", "collesiummall_admin", "*904f_Sj!8AqSxBP");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query("SET CHARACTER SET utf8");
+    $stmt = $conn->prepare("SELECT * FROM `magaza` WHERE `kat`='3' ORDER BY `magaza`.`no` ASC");
+    $stmt->execute();
+
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll();
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+//?>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -24,7 +40,7 @@
 
 <?php include "header.php" ?>
 
-<div id="background" data-bgimage="url(images/background/bg6.jpg) fixed"></div>
+<div id="background" data-bgimage="url(resim/kat/collesiummall-Kat3.jpg) fixed"></div>
 <div class='slider-overlay' style="position: fixed !important;top: 0; left: 0;"></div>
 <div id="content-absolute">
 
@@ -43,151 +59,24 @@
     <section id="section-main" class="no-bg no-top" aria-label="section-menu">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-4">
+                <?php
+                foreach ($result as $item){
+                    echo '<div class="col-lg-4 text-center">
                     <div class="de-room">
-                        <div class="d-image text-center">
-                            <a href="silvio_massimo.php">
-                                <img src="images/COLL_KATLAR/silvio_massimo_logo.webp" class="img-fluid" alt="" width="100%" style="object-fit: cover">
-                                <img src="images/magazalar/0.1.jpg" class="d-img-hover img-fluid" alt="">
+                        <div class="d-image" style="max-width: 390px !important; max-height: 390px !important;margin-left: auto;margin-right: auto;">
+                            <a href="magaza_detay.php?id='.$item['id'].'">
+                                <img src="'.$item['logo'].'" class="img-fluid" alt="Vitrin Görsel" style="width: 390px;height: 390px;object-fit: cover;">
+                                <img src="resim/magazalar/2.webp" class="d-img-hover img-fluid" alt="Collesium Mall" style="width: 390px;height: 390px;object-fit: cover;">
                             </a>
                         </div>
-                        <div class="d-text">
-                            <h3>SILVIO MASSIMO</h3>
+
+                        <div class="d-text" style="max-width: 390px;margin-left: auto;margin-right: auto;">
+                            <h3>'.$item['magaza_adi'].'</h3>
                         </div>
                     </div>
-                </div>
-
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="intellectual.php">
-                                <img src="images/COLL_KATLAR/intellectual_logo.jpg" class="img-fluid" alt="" style="width: 100%; object-fit: cover;">
-                                <img src="images/magazalar/0.1.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>INTELLECTUAL</h3>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="dragoon.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/magazalar/0.1.jpg" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>DRAGOON</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>CYK (ÇAYKARA TEKSTİK)</h3>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>ENİSSE</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>BEST STATION PLUS</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>COLLESIUM KUYUMCULUK</h3>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>KURDAL KURDAL</h3>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>OBAX</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="d-text">
-                            <h3>TOMY LION (EX TABELA)</h3>
-                        </div>
-                    </div>
-                </div>
-
+                </div>';
+                }
+                ?>
             </div>
         </div>
     </section>

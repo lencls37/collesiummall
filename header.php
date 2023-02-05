@@ -2,9 +2,9 @@
 <!-- float text begin -->
 <div class="float-text">
     <div class="de_social-icons">
-        <a href="https://www.facebook.com/collesiummallmerter/"><i class="fa fa-facebook fa-lg"></i></a>
-        <a href="https://twitter.com/collesium_mall/"><i class="fa fa-twitter fa-lg"></i></a>
-        <a href="https://www.instagram.com/collesiummallmerter/"><i class="fa fa-instagram fa-lg"></i></a>
+        <a href="https://www.facebook.com/collesiummallmerter/" target="_blank"><i class="fa fa-facebook fa-lg"></i></a>
+        <a href="https://twitter.com/collesium_mall/" target="_blank"><i class="fa fa-twitter fa-lg"></i></a>
+        <a href="https://www.instagram.com/collesiummallmerter/" target="_blank"><i class="fa fa-instagram fa-lg"></i></a>
     </div>
 <!--    <span><a href="#">Book Now</a></span>-->
 </div>
@@ -64,9 +64,9 @@
                         </div>
 
                         <div class="de-flex-col">
-                            <div class="d-extra">
-                                <a class="btn-main" href="https://www.collesiummall.com/en">EN</a>
-                            </div>
+<!--                            <div class="d-extra">-->
+<!--                                <a class="btn-main" href="https://www.collesiummall.com/en">EN</a>-->
+<!--                            </div>-->
                             <div id="menu-btn"></div>
                         </div>
 
@@ -99,31 +99,26 @@
                             <!-- mainmenu begin -->
                             <ul id="mo-menu">
                                 <li>
-                                    Home
+                                    Anasayfa
                                     <ul>
-                                        <li><a href="kullanılmıyor/02-index.php">Fullscreen Slider</a></li>
-                                        <li><a href="index.php">Fullscreen Slider 2</a></li>
-                                        <li><a href="kullanılmıyor/02-index-slider-3.html">Fullscreen Slider 3</a></li>
-                                        <li><a href="kullanılmıyor/02-index-full-page.html">Full Page</a></li>
-                                        <li><a href="kullanılmıyor/02-index-video-background.html">Fullsreen Video</a></li>
-                                        <li><a href="kullanılmıyor/02-index-room-slider-1.html">New: Room Slider 1</a></li>
-                                        <li><a href="kullanılmıyor/02-index-snowy.html">New: Slider + Snow</a></li>
+                                        <li><a href="index.php">Ana Sayfa</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="hakkimizda.php">About</a></li>
+                                <li><a href="hakkimizda.php">Hakkımızda</a></li>
                                 <li>
-                                    Rooms
+                                    Mağazalars
                                     <ul>
-                                        <li><a href="magazalar.php">2 Columns</a></li>
-                                        <li><a href="kat-1.php">3 Columns</a></li>
-                                        <li><a href="magaza_detay.php">Room Single</a></li>
+                                        <li><a href="kat3.php">Kat 3</a></li>
+                                        <li><a href="kat2.php">Kat 2</a></li>
+                                        <li><a href="kat1.php">Kat 1</a></li>
+                                        <li><a href="kat0.php">Zemin</a></li>
+                                        <li><a href="kat-1.php">Kat -1</a></li>
+                                        <li><a href="kat-2.php">Kat -2</a></li>
+                                        <li><a href="kat-3.php">Kat -3</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="kullanılmıyor/02-booking.html">Booking</a></li>
-                                <li><a href="kullanılmıyor/offer.html">Offers</a></li>
                                 <li><a href="blog.php">Blog</a></li>
-                                <li><a href="kullanılmıyor/02-gallery.html">Gallery</a></li>
-                                <li><a href="konum.php">Contact</a></li>
+                                <li><a href="konum.php">Konum</a></li>
                             </ul>
                             <!-- mainmenu close -->
 

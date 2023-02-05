@@ -24,7 +24,7 @@
 
 <?php include "header.php" ?>
 
-<div id="background" data-bgimage="url(images/background/bg4.jpg) fixed"></div>
+<div id="background" data-bgimage="url(resim/konum/collesiummall-Konum.jpg) fixed"></div>
 <div class='slider-overlay' style="position: fixed !important;top: 0; left: 0;"></div>
 <div id="content-absolute">
 
@@ -57,21 +57,11 @@
                                             <span><strong>Email:</strong><a href="mailto:info@collesiummall.com">info@collesiummall.com</a></span>
                                         </address>
                                     </div>
-
-                                    <!--                                            <div class="col-lg-6">-->
-                                    <!--                                                <h3>Seaside Maldives</h3>-->
-                                    <!--                                                <address>-->
-                                    <!--                                                    <span><strong>Address:</strong>100 S Main St, Los Angeles, CA</span>-->
-                                    <!--                                                    <span><strong>Phone:</strong>(208) 333 9296</span>-->
-                                    <!--                                                    <span><strong>Fax:</strong>(208) 333 9298</span>-->
-                                    <!--                                                    <span><strong>Email:</strong><a href="mailto:contact@example.com">contact@example.com</a></span>-->
-                                    <!--                                                </address>-->
-                                    <!--                                            </div>-->
                                 </div>
 
                                 <div class="spacer-single"></div>
 
-                                <form name="contactForm" id='contact_form' method="post">
+                                <form id='contact_form' method="post" action="">
                                     <div class="row">
                                         <div class="col-md-12 mb10">
                                             <h3>Bize Mesaj Bırak</h3>
@@ -79,51 +69,39 @@
                                         <div class="col-md-6">
                                             <div id='name_error' class='error'>Lütfen isminizi giriniz.</div>
                                             <div>
-                                                <input type='text' name='Name' id='name' class="form-control"
+                                                <input type='text' name='isim' id='name' class="form-control"
                                                        placeholder="Adınız" required>
                                             </div>
 
                                             <div id='email_error' class='error'>Lütfen doğru bir mail adresi giriniz.
                                             </div>
                                             <div>
-                                                <input type='email' name='Email' id='email' class="form-control"
+                                                <input type='email' name='mail' id='email' class="form-control"
                                                        placeholder="Mail adresiniz" required>
                                             </div>
 
                                             <div id='phone_error' class='error'>Lütfen numaranızı giriniz.</div>
                                             <div>
-                                                <input type='text' name='phone' id='phone' class="form-control"
+                                                <input type='text' name='telefon' id='phone' class="form-control"
                                                        placeholder="Telefonunuz" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div id='message_error' class='error'>Lütfen mesaj giriniz.</div>
                                             <div>
-                                                <textarea name='message' id='message' class="form-control"
+                                                <textarea name='mesaj' id='message' class="form-control"
                                                           placeholder="Mesajınız" required></textarea>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
-                                            <div class="g-recaptcha" data-sitekey="copy-your-site-key-here"></div>
-                                            <p id='submit' class="mt20">
-                                                <input type='submit' id='send_message' value='Mesajı Gönder'
-                                                       class="btn btn-line">
-                                            </p>
-                                            <div id='mail_success' class='success'>Mesaj başarıyla gönderildi.</div>
-                                            <div id='mail_fail' class='error'>Mesajınız gönderilemedi. Lütfen sonra
-                                                tekrar deneyin.
-                                            </div>
-
+                                            <button class="btn btn-line" type="submit">Gönder</button>
                                         </div>
                                     </div>
                                 </form>
 
-                                <div id="success_message" class='success'>
-                                    Mesajınız başarıyla gönderildi. Daha fazla mesaj göndermek için sayfayı yenileyin.
-                                </div>
+                                <div id="success_message" class='success'></div>
                                 <div id="error_message" class='error'>
-                                    Mesajınız gönderilirken bir hata oluştu! Lütfen sonra tekrar deneyin.
                                 </div>
                             </div>
 
@@ -148,8 +126,31 @@
 ================================================== -->
 <script src="js/plugins.js"></script>
 <script src="js/designesia.js"></script>
-<script src='https://www.google.com/recaptcha/api.js' async defer></script>
-<script src="form.js"></script>
-
+<!--<script src='https://www.google.com/recaptcha/api.js' async defer></script>-->
+<!--<script src="form.js"></script>-->
+<!--<script>-->
+<!--    function onSubmit(token) {-->
+<!--        document.getElementById("demo-form").submit();-->
+<!--    }-->
+<!--</script>-->
+<script>
+    $(document).ready(function() {
+        $('#contact_form').submit(function(e) {
+            console.log("Submit girdi");
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'form.php',
+                data: $(this).serialize(),
+                success: function(response) {
+                    $('#success_message').html(response);
+                }
+                error: function (response){
+                    $('#error_message').html(response);
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

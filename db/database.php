@@ -11,15 +11,15 @@ class Database
     public function connect()
     {
 
-        $dbHost = 'localhost';
-        $dbName = 'collesiummall';
-        $dbUserName = 'root';
-        $dbPass = '';
-//          Sunucu giriş bilgileri
 //        $dbHost = 'localhost';
-//        $dbName = 'collesiummall_db';
-//        $dbUserName = 'collesiummall_admin';
-//        $dbPass = '*904f_Sj!8AqSxBP';
+//        $dbName = 'collesiummall';
+//        $dbUserName = 'root';
+//        $dbPass = '';
+//          Sunucu giriş bilgileri
+        $dbHost = 'localhost';
+        $dbName = 'collesiummall_db';
+        $dbUserName = 'collesiummall_admin';
+        $dbPass = '*904f_Sj!8AqSxBP';
 
         $db = null;
         if ($db === null) {

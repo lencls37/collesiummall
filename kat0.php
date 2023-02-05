@@ -1,3 +1,20 @@
+<?php
+
+
+try {
+    $conn = new PDO("mysql:host=localhost;dbname=collesiummall_db", "collesiummall_admin", "*904f_Sj!8AqSxBP");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query("SET CHARACTER SET utf8");
+    $stmt = $conn->prepare("SELECT * FROM `magaza` WHERE `kat`='00' ORDER BY `magaza`.`no` ASC");
+    $stmt->execute();
+
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll();
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+//?>
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -24,7 +41,7 @@
 
 <?php include "header.php" ?>
 
-<div id="background" data-bgimage="url(images/background/bg6.jpg) fixed"></div>
+<div id="background" data-bgimage="url(resim/kat/collesiummall-Kat0.jpg) fixed"></div>
 <div class='slider-overlay' style="position: fixed !important;top: 0; left: 0;"></div>
 <div id="content-absolute">
 
@@ -43,335 +60,24 @@
     <section id="section-main" class="no-bg no-top" aria-label="section-menu">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-4">
+                <?php
+                foreach ($result as $item){
+                    echo '<div class="col-lg-4 text-center">
                     <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
+                        <div class="d-image" style="max-width: 390px !important; max-height: 390px !important;margin-left: auto;margin-right: auto;">
+                            <a href="magaza_detay.php?id='.$item['id'].'">
+                                <img src="'.$item['logo'].'" class="img-fluid" alt="Vitrin Görsel" style="width: 390px;height: 390px;object-fit: cover;">
+                                <img src="resim/magazalar/2.webp" class="d-img-hover img-fluid" alt="Collesium Mall" style="width: 390px;height: 390px;object-fit: cover;">
                             </a>
                         </div>
 
-                        <div class="d-text">
-                            <h3>MOONLIGHT</h3>
+                        <div class="d-text" style="max-width: 390px;margin-left: auto;margin-right: auto;">
+                            <h3>'.$item['magaza_adi'].'</h3>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>RED POLO</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>CALYPOLY</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>EX PLAIN</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>ILIZIONE</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>LION REPUBLIC</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>DARPEL PLUSE</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>QUENCY</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>WILBERT</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>EDENBERG</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>GREENWICH</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>TROY LIFE</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>NIF MOUNTAIN</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>PAUL FREDY</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>DANIEL JONS</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>DAYMEN SPORT</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>RED SHARK</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>RONI MIRANO</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>RAYNA</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>FLORIDA MRT</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>LOS PEPES</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="de-room">
-                        <div class="d-image">
-                            <a href="magaza_detay.php">
-                                <img src="images/logo/logo-dragoon.png" class="img-fluid" alt="">
-                                <img src="images/logo/logo-silvio_massomo.png" class="d-img-hover img-fluid" alt="">
-                            </a>
-                        </div>
-
-                        <div class="d-text">
-                            <h3>RIPPA</h3>
-                        </div>
-                    </div>
-                </div>
+                </div>';
+                }
+                ?>
             </div>
         </div>
     </section>

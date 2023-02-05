@@ -80,21 +80,21 @@
 
         var slides = [];
         slides.push({
-            image: 'images/slider/bg1.jpg',
+            image: 'resim/slider/collesium-slide-magazalar.jpg',
             title: "<div class='slider-text'><h3 class='bg wow fadeInUp' data-wow-delay='.5s'>Mağazalar</h3><h4 class='bg wow fadeInUp' data-wow-delay='.8s'>Mağazalarımızı inceleyin ve detaylı bilgi alın.</h4><a class='btn-line wow fadeInUp' data-wow-delay='1s' href='magazalar.php'><span>Mağazalar</span></a></div>",
             thumb: '',
             url: ''
         });
 
         slides.push({
-            image: 'images/slider/bg2.jpg',
+            image: 'resim/slider/collesium-slide-sosyalmedya.jpg',
             title: "<div class='slider-text'><h3 class='bg wow fadeInUp' data-wow-delay='.5s'>Sosyal Medyada bizi takip edin</h3><h4 class='bg wow fadeInUp' data-wow-delay='.8s'>En güncel bilgilere erken erişmek için bizi sosyal medyada takip edin.</h4><a href='https://www.facebook.com/collesiummallmerter/' style='margin: 20px;'><i class='fa fa-facebook fa-lg'></i></a><a href='https://twitter.com/collesium_mall/' style='margin: 20px;'><i class='fa fa-twitter fa-lg'></i></a><a href='https://www.instagram.com/collesiummallmerter/' style='margin: 20px;'><i class='fa fa-instagram fa-lg'></i></a></div>",
             thumb: '',
             url: ''
         });
 
         slides.push({
-            image: 'images/slider/bg3.jpg',
+            image: 'resim/slider/collesium-slide-hakkimizda.jpg',
             title: "<div class='slider-text'><h3 class='bg wow fadeInUp' data-wow-delay='.5s'>Hakkımızda</h3><h4 class='bg wow fadeInUp' data-wow-delay='.8s'>Hakkımızda detaylı bilgi için sayfayı ziyaret edin.</h4><a class='btn-line wow fadeInUp' data-wow-delay='1s' href='hakkimizda.php'><span>Hakkımızda</span></a></div>",
             thumb: '',
             url: ''

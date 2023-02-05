@@ -26,7 +26,7 @@
 
 <?php include "header.php" ?>
 
-<div id="background" data-bgimage="url(images/background/bg8.jpg) fixed"></div>
+<div id="background" data-bgimage="url(resim/blog/collesiummall-blog.jpg) fixed"></div>
 <div class='slider-overlay' style="position: fixed !important;top: 0; left: 0;"></div>
 <div id="content-absolute">
 
@@ -49,17 +49,16 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="d-items">
                         <div class="card-image-1 mod-b">
-                            <a href="blog-yazi.php" class="d-text">
+                            <a href="buyuk-iftar.php" class="d-text">
                                 <div class="d-inner">
-                                    <span class="atr-date">Dec 10, 2021</span>
-                                    <h3>Lorem ipsum dolor sit amet.</h3>
-                                    <p>Quis cupidatat quis dolore amet aliquip ea exercitation labore proident dolore
-                                        minim culpa ullamco aute eiusmod tempor anim nostrud quis officia dolore
-                                        adipisicing elit ex est adipisicing.</p>
+                                    <span class="atr-date">23.05.2019</span>
+                                    <h3>BÜYÜK İFTAR DAVETİ</h3>
+                                    <p>Star Group ortaklarının Perşembe Günü Gülsever sokakta gerçekleştirdiği iftara
+                                        katılımda bulunan herkese bizi onurlandırdığı için teşekkür ederiz.</p>
                                     <h5 class="d-tag">BLOG</h5>
                                 </div>
                             </a>
-                            <img src="images/blog/blog1.jpeg" class="img-fluid" alt="">
+                            <img src="https://www.collesiummall.com/images/about/i06.jpg" class="img-fluid" alt="" style="width: 390px;height: 390px;object-fit: cover;">
                         </div>
                     </div>
                 </div>
@@ -67,112 +66,56 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="d-items">
                         <div class="card-image-1 mod-b">
-                            <a href="blog-yazi.php" class="d-text">
+                            <a href="collesium-mall-acilis-galasi.php" class="d-text">
                                 <div class="d-inner">
-                                    <span class="atr-date">Dec 10, 2021</span>
-                                    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing</h3>
-                                    <p>Quis cupidatat quis dolore amet aliquip ea exercitation labore proident dolore
-                                        minim culpa ullamco aute eiusmod tempor anim nostrud quis officia dolore
-                                        adipisicing elit ex est adipisicing.</p>
+                                    <span class="atr-date">30.04.2019</span>
+                                    <h3>COLLESIUM MALL - AÇILIŞ GALASI</h3>
+                                    <p></p>
                                     <h5 class="d-tag">BLOG</h5>
                                 </div>
                             </a>
-                            <img src="images/blog/blog2.jpg" class="img-fluid" alt="">
+                            <img src="https://www.collesiummall.com/images/about/a01.jpg" class="img-fluid" alt="" style="width: 390px;height: 390px;object-fit: cover;">
                         </div>
                     </div>
                 </div>
+
 
                 <div class="col-lg-4 col-md-6">
                     <div class="d-items">
                         <div class="card-image-1 mod-b">
-                            <a href="blog-yazi.php" class="d-text">
+                            <a href="buyuk-acilis-defilesi.php" class="d-text">
                                 <div class="d-inner">
-                                    <span class="atr-date">Dec 10, 2021</span>
-                                    <h3>Lorem ipsum dolor sit amet, consectetur</h3>
-                                    <p>Quis cupidatat quis dolore amet aliquip ea exercitation labore proident dolore
-                                        minim culpa ullamco aute eiusmod tempor anim nostrud quis officia dolore
-                                        adipisicing elit ex est adipisicing.</p>
+                                    <span class="atr-date">01.08.2018</span>
+                                    <h3>BÜYÜK AÇILIŞ DEFİLESİ - CASTING</h3>
+                                    <p>Büyük açılış defilesi için casting çalışmalarının, Yönetim Kurulu üyelerimizden
+                                        Hüseyin Kazıkkaya ve Halil Kasap birlikte bizzat gerçekleştirdi.
+                                    </p>
                                     <h5 class="d-tag">BLOG</h5>
                                 </div>
                             </a>
-                            <img src="images/blog/blog3.jpg" class="img-fluid" alt="">
+                            <img src="https://www.collesiummall.com/images/about/d08.jpg" class="img-fluid" alt="" style="width: 390px;height: 390px;object-fit: cover;">
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="d-items">
-                        <div class="card-image-1 mod-b">
-                            <a href="blog-yazi.php" class="d-text">
-                                <div class="d-inner">
-                                    <span class="atr-date">Dec 10, 2021</span>
-                                    <h3>Lorem ipsum dolor sit amet, consectetur</h3>
-                                    <p>Quis cupidatat quis dolore amet aliquip ea exercitation labore proident dolore
-                                        minim culpa ullamco aute eiusmod tempor anim nostrud quis officia dolore
-                                        adipisicing elit ex est adipisicing.</p>
-                                    <h5 class="d-tag">BLOG</h5>
-                                </div>
-                            </a>
-                            <img src="images/blog/blog2.jpg" class="img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="d-items">
-                        <div class="card-image-1 mod-b">
-                            <a href="blog-yazi.php" class="d-text">
-                                <div class="d-inner">
-                                    <span class="atr-date">Dec 10, 2021</span>
-                                    <h3>Lorem ipsum dolor sit amet</h3>
-                                    <p>Quis cupidatat quis dolore amet aliquip ea exercitation labore proident dolore
-                                        minim culpa ullamco aute eiusmod tempor anim nostrud quis officia dolore
-                                        adipisicing elit ex est adipisicing.</p>
-                                    <h5 class="d-tag">BLOG</h5>
-                                </div>
-                            </a>
-                            <img src="images/blog/blog1.jpeg" class="img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="d-items">
-                        <div class="card-image-1 mod-b">
-                            <a href="blog-yazi.php" class="d-text">
-                                <div class="d-inner">
-                                    <span class="atr-date">Dec 10, 2021</span>
-                                    <h3>Lorem ipsum dolor sit amet, consectetur.</h3>
-                                    <p>Quis cupidatat quis dolore amet aliquip ea exercitation labore proident dolore
-                                        minim culpa ullamco aute eiusmod tempor anim nostrud quis officia dolore
-                                        adipisicing elit ex est adipisicing.</p>
-                                    <h5 class="d-tag">BLOG</h5>
-                                </div>
-                            </a>
-                            <img src="images/blog/blog3.jpg" class="img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
-
 
                 <div class="clearfix"></div>
 
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-
-                    </ul>
-                </nav>
+<!--                <nav aria-label="Page navigation example">-->
+<!--                    <ul class="pagination justify-content-center">-->
+<!---->
+<!--                        <li class="page-item active"><a class="page-link" href="#">1</a></li>-->
+<!--                        <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--                        <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!---->
+<!--                    </ul>-->
+<!--                </nav>-->
 
             </div>
 
         </div>
     </section>
     <!-- subheader close -->
-    <?php include "footer.php"?>
+    <?php include "footer.php" ?>
 </div>
 
 <!-- Javascript Files

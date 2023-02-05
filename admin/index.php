@@ -1,3 +1,21 @@
+<?php
+session_start();
+if(isset($_POST['kadi']) and isset($_POST['sifre'])){
+    if ($_POST['kadi'] == "admin" and $_POST['sifre'] == "admin123"){
+        $_SESSION['key'] = "f95030b81f2f99551f35e57932488e41832cbc0231fb191d93504554d82b10c2";
+    }else{
+        session_destroy();
+        header("Location: login.php");
+        exit();
+    }
+}
+if($_SESSION['key'] != "f95030b81f2f99551f35e57932488e41832cbc0231fb191d93504554d82b10c2"){
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +59,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="logout.php" role="button">
+                <a class="nav-link" href="logout.php" role="button">
                     <i class="bi bi-box-arrow-right"></i>
                 </a>
             </li>

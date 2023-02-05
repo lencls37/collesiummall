@@ -4,14 +4,15 @@ if (empty($_GET['id'])) {
     exit();
 } else {
     $host = 'localhost';
-    $dbname = 'collesiummall';
-    $username = 'root';
-    $password = '';
+    $dbname = 'collesiummall_db';
+    $username = 'collesiummall_admin';
+    $password = '*904f_Sj!8AqSxBP';
 
     try {
         global $conn;
         $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
         // set the PDO error mode to exception
+        $conn->query("SET CHARACTER SET utf8");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
         echo "Veritabanı Bağlantı hatası: " . $e->getMessage();
@@ -25,7 +26,6 @@ if (empty($_GET['id'])) {
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $magazalar = $stmt->fetchAll();
 
-//print_r( $magazalar);
 
     $magaza_adi = $magazalar[0]['magaza_adi'];
     $magaza_aciklama_metin = $magazalar[0]['magaza_aciklama'];
@@ -42,17 +42,24 @@ if (empty($_GET['id'])) {
     $magaza_detay_slider9 = $magazalar[0]['magaza_detay_slider9'];
     $magaza_detay_slider10 = $magazalar[0]['magaza_detay_slider10'];
 
-
-    $magaza_detay_slider1_aciklama = $magazalar[0]['magaza_detay_slider1_aciklama'];
-    $magaza_detay_slider2_aciklama = $magazalar[0]['magaza_detay_slider2_aciklama'];
-    $magaza_detay_slider3_aciklama = $magazalar[0]['magaza_detay_slider3_aciklama'];
-    $magaza_detay_slider4_aciklama = $magazalar[0]['magaza_detay_slider4_aciklama'];
-    $magaza_detay_slider5_aciklama = $magazalar[0]['magaza_detay_slider5_aciklama'];
-    $magaza_detay_slider6_aciklama = $magazalar[0]['magaza_detay_slider6_aciklama'];
-    $magaza_detay_slider7_aciklama = $magazalar[0]['magaza_detay_slider7_aciklama'];
-    $magaza_detay_slider8_aciklama = $magazalar[0]['magaza_detay_slider8_aciklama'];
-    $magaza_detay_slider9_aciklama = $magazalar[0]['magaza_detay_slider9_aciklama'];
-    $magaza_detay_slider10_aciklama = $magazalar[0]['magaza_detay_slider10_aciklama'];
+    $facebook_url = $magazalar[0]['facebook_url'];
+    $facebook_kullanici_adi = $magazalar[0]['facebook_kullanici_adi'];
+    $kat_ve_no = "Kat ".$magazalar[0]['kat'] . " No: ".$magazalar[0]['no'];
+    $logo = $magazalar[0]['logo'];
+    $telefon = $magazalar[0]['telefon'];
+    $whatsapp_numara = $magazalar[0]['whatsapp_numara'];
+    $whatsapp_url = $magazalar[0]['whatsapp_url'];
+    $telegram_kullanici_adi = $magazalar[0]['telegram_kullanci_adi'];
+    $telegram_url = $magazalar[0]['telegram_url'];
+    $tiktok_url = $magazalar[0]['tiktok_url'];
+    $tiktok_kullanici_adi = $magazalar[0]['tiktok_kullanici_adi'];
+    $website = $magazalar[0]['website'];
+    $mail = $magazalar[0]['mail'];
+    $youtube_kullanici_adi = $magazalar[0]['youtube_kullanici_adi'];
+    $youtube_url = $magazalar[0]['youtube_url'];
+    $konsept = $magazalar[0]['konsept_yazi'];
+    $instagram_kullanici_adi = $magazalar[0]['instagram_kullanici_adi'];
+    $instagram_url = $magazalar[0]['instagram_url'];
 
 }
 
@@ -71,7 +78,7 @@ function resim_ekle($resimurl, $aciklama)
                          </span>
                     </span>
                 </a>
-                <img src="' . $resimurl . '" alt="">
+                <img src="' . $resimurl . '" alt="" style="max-width: 400px;">
             </div>
           </div>
     ';
@@ -107,7 +114,7 @@ function resim_ekle($resimurl, $aciklama)
 
 <?php include "header.php"; ?>
 
-<div id="background" data-bgimage=<?php echo "url(" . $magaza_arkaplan_resim . ") fixed" ?>></div>
+<div id="background" data-bgimage='url("images/fotolar/c-01.jpeg") fixed'></div>
 <div id="content-absolute">
 
     <!-- subheader -->
@@ -130,31 +137,15 @@ function resim_ekle($resimurl, $aciklama)
                         <div class="d-carousel wow fadeInRight" data-wow-delay="2s">
                             <div id="carousel-rooms" class="owl-carousel owl-theme">
 
+
                                 <?php
+                                resim_ekle($logo,$magaza_adi);
                                 for ($i = 1; $i <= 10; $i++) {
                                     if (!is_null(${'magaza_detay_slider' . $i}) and !is_null(${'magaza_detay_slider' . $i . '_aciklama'})) {
                                         resim_ekle(${'magaza_detay_slider' . $i}, ${'magaza_detay_slider' . $i . '_aciklama'});
                                     }
                                 }
                                 ?>
-
-
-                                <!--                                    <div class="item">-->
-                                <!--                                        <div class="picframe">-->
-                                <!--                                            <a class="image-popup-gallery" href="images/room-single/pf%20(7).jpg">-->
-                                <!--                                                <span class="overlay">-->
-                                <!--                                                    <span class="pf_title">-->
-                                <!--                                                        <i class="icon_search"></i>    -->
-                                <!--                                                    </span>-->
-                                <!--                                                    <span class="pf_caption">-->
-                                <!--                                                        Extra bed-->
-                                <!--                                                    </span>  -->
-                                <!--                                                </span>-->
-                                <!--                                            </a>-->
-                                <!---->
-                                <!--                                            <img src="images/room-single/pf%20(7).jpg" alt="">-->
-                                <!--                                        </div>-->
-                                <!--                                    </div>-->
 
                             </div>
 
@@ -167,36 +158,48 @@ function resim_ekle($resimurl, $aciklama)
                                 <div class="d-room-details de-flex">
                                     <div class="de-flex-col">
                                         <i class="bi bi-instagram" style="margin-right: 20px;font-size: 32px;"></i>
-                                        <a href="#" class="link-light">INSTAGRAM</a>
+                                        <a href="<?php echo $instagram_url;?>" class="link-light" target="_blank"><?php echo $instagram_kullanici_adi;?></a>
                                     </div>
                                     <div class="de-flex-col">
-                                        <i class="bi bi-whatsapp" style="margin-right: 20px;font-size: 32px;"></i>+90
-                                        555 555 55 55
+                                        <i class="bi bi-whatsapp" style="margin-right: 20px;font-size: 32px;"></i>
+                                        <a href="<?php echo $whatsapp_url;?>" class="link-light" target="_blank"><?php echo $whatsapp_numara;?></a>
                                     </div>
                                     <div class="de-flex-col">
-                                        <i class="bi bi-telephone" style="margin-right: 20px;font-size: 32px;"></i>+90
-                                        555 555 55 55
+                                        <i class="bi bi-telephone" style="margin-right: 20px;font-size: 32px;"></i>+
+                                        <a href="tel:<?php echo $telefon?>" class="link-light"><?php echo $telefon;?></a>
                                     </div>
                                     <div class="de-flex-col">
-                                        <a href="#" class="btn-main"><span>KAT 3 NO 17</span></a>
+                                        <a href="#" class="btn-main"><span><?php echo $kat_ve_no?></span></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <h3><?php echo $magaza_aciklama_baslik ?></h3>
-                                <p><?php echo $magaza_aciklama_metin ?></p>
+                                <h3>KONSEPT</h3>
+                                <p><?php echo $konsept ?></p>
                             </div>
                             <div class="col-md-4">
-                                <h3>Mağaza Bilgileri</h3>
-                                <ul class="ul-style-2">
-                                    <!--                                <ul style="list-style: none">-->
-                                    <li>TEST 1</li>
-                                    <li>TEST 1</li>
-                                    <li>TEST 1</li>
-                                    <li>TEST 1</li>
-                                    <li>TEST 1</li>
-                                    <li>TEST 1</li>
-
+                                <h3>Bağlantılar</h3>
+                                <ul style="list-style: none;padding-left: 0 !important;" class="ul-style-2">
+                                    <?php
+                                    if(!empty($facebook_url) and  !empty($facebook_kullanici_adi)){
+                                        echo '<li><i class="bi bi-facebook"></i><a target="_blank" href="'.$facebook_url.'" class="link-light"> '.$facebook_kullanici_adi.'</a></li>';
+                                    }
+                                    if(!empty($telegram_url) and  !empty($telegram_kullanici_adi)){
+                                        echo '<li><i class="bi bi-telegram"></i><a target="_blank" href="'.$telegram_url.'" class="link-light"> '.$telegram_kullanici_adi.'</a></li>';
+                                    }
+                                    if(!empty($tiktok_url) and  !empty($tiktok_kullanici_adi)){
+                                        echo '<li><i class="bi bi-tiktok"></i><a target="_blank" href="'.$tiktok_url.'" class="link-light"> '.$tiktok_kullanici_adi.'</a></li>';
+                                    }
+                                    if(!empty($youtube_url) and  !empty($youtube_kullanici_adi)){
+                                        echo '<li><i class="bi bi-youtube"></i><a target="_blank" href="http://'.$youtube_url.'" class="link-light"> '.$youtube_kullanici_adi.'</a></li>';
+                                    }
+                                    if(!empty($website)){
+                                        echo '<li><i class="bi bi-globe"></i><a target="_blank" href="http://'.$website.'" class="link-light">Web Sitesi</a></li>';
+                                    }
+                                    if(!empty($mail)){
+                                        echo '<li><i class="bi bi-envelope-at-fill"></i><a target="_blank" href="mailto:'.$mail.'" class="link-light"> '.$mail.'</a></li>';
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                         </div>
