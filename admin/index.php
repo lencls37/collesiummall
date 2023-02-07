@@ -149,12 +149,6 @@ if($_SESSION['key'] != "f95030b81f2f99551f35e57932488e41832cbc0231fb191d93504554
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="index.php?sayfa=yazi_duzenle" class="nav-link">
-                                    <i class="fas fa-edit nav-icon"></i>
-                                    <p>Yazıları Düzenle</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="index.php?sayfa=yazi_liste" class="nav-link">
                                     <i class="fas fa-list nav-icon"></i>
                                     <p>Yazı Listesi</p>
@@ -193,11 +187,14 @@ if($_SESSION['key'] != "f95030b81f2f99551f35e57932488e41832cbc0231fb191d93504554
                     case "yazi_ekle":
                         include("sayfa/yazi_ekle.php");
                         break;
-                    case "yazi_duzenle":
-                        include ("sayfa/yazi_duzenle.php");
+                    case "yazi_sil":
+                        include("api/yazi_sil.php");
                         break;
                     case "yazi_liste":
                         include  ("sayfa/yazi_listele.php");
+                        break;
+                    case "yazi_duzenle":
+                        include "sayfa/yazi_duzenle.php";
                         break;
                 }
             }

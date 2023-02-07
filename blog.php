@@ -1,3 +1,21 @@
+<?php
+
+
+try {
+    $conn = new PDO("mysql:host=localhost;dbname=collesiummall_db", "collesiummall_admin", "*904f_Sj!8AqSxBP");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query("SET CHARACTER SET utf8");
+    $stmt = $conn->prepare("SELECT * FROM `blog` WHERE 1 ORDER BY `blog`.`tarih` ASC");
+    $stmt->execute();
+
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll();
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+//?>
+
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -45,6 +63,28 @@
     <section id="section-main" class="no-bg no-top" aria-label="section-menu">
         <div class="container">
             <div class="row g-4">
+
+                <?php
+
+                foreach ($result as $item) {
+                    echo '<div class="col-lg-4 col-md-6">
+                    <div class="d-items">
+                        <div class="card-image-1 mod-b">
+                            <a href="blog-yazi.php?id='. $item['id'] .'" class="d-text">
+                                <div class="d-inner">
+                                    <span class="atr-date">'.$item['tarih'].'</span>
+                                    <h3>'.$item['baslik'].'</h3>
+                                    <p>'.substr(strip_tags($item['html_yazi']),0,60).'...</p>
+                                    <h5 class="d-tag">BLOG</h5>
+                                </div>
+                            </a>
+                            <img src="https://www.collesiummall.com/images/about/i06.jpg" class="img-fluid" alt="" style="width: 390px;height: 390px;object-fit: cover;">
+                        </div>
+                    </div>
+                </div>';
+                }
+
+                ?>
 
                 <div class="col-lg-4 col-md-6">
                     <div class="d-items">

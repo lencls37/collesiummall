@@ -16,13 +16,19 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="store-name">Tarih</label>
-                                <input type="datetime-local" class="form-control" id="tarih" name="tarih" required>
+                                <input type="date" class="form-control" id="tarih" name="tarih" required>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="store-name">Yazı İçeriği</label>
                                 <div id="editor"></div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="hash">Etiketler</label>
+                                <input type="text" class="form-control" id="etiket" name="etiket" required placeholder="Virgülle ayırınız..">
                             </div>
                         </div>
                         <div class="col-12 text-center">
@@ -76,19 +82,19 @@
     form.addEventListener("submit", function(event) {
         event.preventDefault();
 
-
-        event.preventDefault();
-        var baslik = document.querySelector('#baslik').value;
-        var tarih = document.querySelector('#tarih').value;
-        var content = quill.root.innerHTML;
+        let etiket = document.getElementById('etiket').value;
+        let baslik = document.querySelector('#baslik').value;
+        let tarih = document.querySelector('#tarih').value;
+        let content = quill.root.innerHTML;
 
         $.ajax({
             type: 'POST',
-            url: 'api/submit.php',
+            url: 'api/yazi_ekle.php',
             data:{
                 baslik: baslik,
                 tarih: tarih,
-                html_yazi: content
+                html_yazi: content,
+                etiket: etiket
             },
             success: function (data){
                 let goster = $('#basarili');
@@ -102,44 +108,4 @@
             }
         })
     });
-
-
-    // function veri_gonder(){
-    //     var title = document.querySelector('#title').value;
-    //     var date = document.querySelector('#date').value;
-    //     var content = editor.root.innerHTML;
-    //
-    //     // AJAX isteği oluşturun ve verileri gönderin
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.open('POST', 'api/submit.php', true);
-    //     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    //     xhr.onreadystatechange = function() {
-    //         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-    //             // Handle the response here
-    //             $('#mesaj').html(xhr.responseText);
-    //         }else{
-    //             $('#mesaj').html(xhr.status);
-    //         }
-    //     };
-    //     xhr.send('baslik=' + encodeURIComponent(title) + '&tarih=' + encodeURIComponent(date) + '&html_yazi=' + encodeURIComponent(content));
-    //
-    //     return false;
-    // }
 </script>
-
-
-
-<!-- Initialize the editor -->
-<!--<script>-->
-<!--    var quill = new Quill('#editor', {-->
-<!--        modules: {-->
-<!--            toolbar: [-->
-<!--                [{ header: [1, 2, false] }],-->
-<!--                ['bold', 'italic', 'underline'],-->
-<!--                ['image', 'code-block']-->
-<!--            ]-->
-<!--        },-->
-<!--        placeholder: 'Yazmaya başlayın...',-->
-<!--        theme: 'snow'-->
-<!--    });-->
-<!--</script>-->

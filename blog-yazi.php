@@ -1,3 +1,24 @@
+<?php
+if(!isset($_GET['id'])){
+    exit();
+}else{
+    try {
+        $conn = new PDO("mysql:host=localhost;dbname=collesiummall_db", "collesiummall_admin", "*904f_Sj!8AqSxBP");
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->query("SET CHARACTER SET utf8");
+        $stmt = $conn->prepare("SELECT * FROM `blog` WHERE `id`='".$_GET['id']."';");
+        $stmt->execute();
+
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll()[0];
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+
+//?>
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -34,7 +55,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 offset-md-1 mt-4 text-center">
-                    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing.</h1>
+                    <h1><?php echo $result['baslik']; ?></h1>
                 </div>
             </div>
         </div>
@@ -48,46 +69,12 @@
                         <div class="post-content">
 
                             <div class="post-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt
-                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat. Lorem ipsum dolor
-                                    sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat. Lorem ipsum dolor sit
-                                    amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
-
-                                <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt
-                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
-                                </blockquote>
-
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt
-                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat. Lorem ipsum dolor
-                                    sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat. Lorem ipsum dolor sit
-                                    amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+                                <?php echo $result['html_yazi']; ?>
                             </div>
                         </div>
 
                         <div class="post-meta"><span><i class="fa fa-user id-color"></i>By: <a
-                                        href="#">Collesium Mall</a></span> <span><i class="fa fa-tag id-color"></i><a
-                                        href="#">Collesium</a>, <a href="#">Mall</a></span> <span><i
+                                        href="#">Collesium Mall</a></span> <span><i class="fa fa-tag id-color"></i><?php echo $result['etiket'];?></span> <span><i
 
                         <div class="spacer-single"></div>
                     </div>
