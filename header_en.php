@@ -6,7 +6,7 @@
         <a href="https://twitter.com/collesium_mall/" target="_blank"><i class="fa fa-twitter fa-lg"></i></a>
         <a href="https://www.instagram.com/collesiummallmerter/" target="_blank"><i class="fa fa-instagram fa-lg"></i></a>
     </div>
-<!--    <span><a href="#">Book Now</a></span>-->
+    <!--    <span><a href="#">Book Now</a></span>-->
 </div>
 <!-- float text close -->
 
@@ -32,30 +32,32 @@
 
                             <ul id="mainmenu">
                                 <li>
-                                    <a href="index.php">Anasayfa</a>
+                                    <a href="index.php">Home</a>
                                 </li>
-                                <li><a href="hakkimizda.php">Hakkımızda</a></li>
+                                <li><a href="hakkimizda.php">About Us</a></li>
                                 <li>
-                                    <a href="magazalar.php">Mağazalar</a>
+                                    <a href="magazalar.php">Floors</a>
                                     <ul>
-                                        <li><a href="kat3.php">Kat 3</a></li>
-                                        <li><a href="kat2.php">Kat 2</a></li>
-                                        <li><a href="kat1.php">Kat 1</a></li>
-                                        <li><a href="kat0.php">Kat 0</a></li>
-                                        <li><a href="kat-1.php">Kat -1</a></li>
-                                        <li><a href="kat-2.php">Kat -2</a></li>
-                                        <li><a href="kat-3.php">Kat -3</a></li>
+                                        <li><a href="kat3.php">Floor 3</a></li>
+                                        <li><a href="kat2.php">Floor 2</a></li>
+                                        <li><a href="kat1.php">Floor 1</a></li>
+                                        <li><a href="kat0.php">Floor 0</a></li>
+                                        <li><a href="kat-1.php">Floor -1</a></li>
+                                        <li><a href="kat-2.php">Floor -2</a></li>
+                                        <li><a href="kat-3.php">Floor -3</a></li>
                                     </ul>
                                 </li>
+                                <!--                                        <li><a href="02-booking.html">Booking</a></li>-->
+                                <!--                                        <li><a href="02-offer.html">Offers</a></li>-->
                                 <li><a href="blog.php">Blog</a></li>
-                                <li><a href="konum.php">Konum</a></li>
+                                <li><a href="konum.php">Location</a></li>
                             </ul>
                         </div>
 
                         <div class="de-flex-col">
-                            <div class="d-extra">
-                                <a class="btn-main" href="https://www.collesiummall.com/?dil=en">EN</a>
-                            </div>
+                                                        <div class="d-extra">
+                                                            <a class="btn-main" href="https://www.collesiummall.com/?dil=tr">TR</a>
+                                                        </div>
                             <div id="menu-btn"></div>
                         </div>
 
@@ -79,7 +81,7 @@
 
                     <div class="pt80 pb80">
                         <div class="mo-nav text-center">
-                            <a href="kullanılmıyor/02-index.php">
+                            <a href="index.php">
                                 <img class="logo" src="images/logo.png" alt="">
                             </a>
 
@@ -88,26 +90,26 @@
                             <!-- mainmenu begin -->
                             <ul id="mo-menu">
                                 <li>
-                                    Anasayfa
+                                    Home
                                     <ul>
-                                        <li><a href="index.php">Ana Sayfa</a></li>
+                                        <li><a href="index.php">Home Page</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="hakkimizda.php">Hakkımızda</a></li>
                                 <li>
-                                    Mağazalars
+                                    Floors
                                     <ul>
-                                        <li><a href="kat3.php">Kat 3</a></li>
-                                        <li><a href="kat2.php">Kat 2</a></li>
-                                        <li><a href="kat1.php">Kat 1</a></li>
-                                        <li><a href="kat0.php">Zemin</a></li>
-                                        <li><a href="kat-1.php">Kat -1</a></li>
-                                        <li><a href="kat-2.php">Kat -2</a></li>
-                                        <li><a href="kat-3.php">Kat -3</a></li>
+                                        <li><a href="kat3.php">Floor 3</a></li>
+                                        <li><a href="kat2.php">Floor 2</a></li>
+                                        <li><a href="kat1.php">Floor 1</a></li>
+                                        <li><a href="kat0.php">Floor 0</a></li>
+                                        <li><a href="kat-1.php">Floor -1</a></li>
+                                        <li><a href="kat-2.php">Floor -2</a></li>
+                                        <li><a href="kat-3.php">Floor -3</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="blog.php">Blog</a></li>
-                                <li><a href="konum.php">Konum</a></li>
+                                <li><a href="konum.php">Location</a></li>
                             </ul>
                             <!-- mainmenu close -->
 

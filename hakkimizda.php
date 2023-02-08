@@ -22,7 +22,21 @@
 
 <body class="has-menu-bar">
 
-<?php include "header.php" ?>
+<?php
+session_start();
+if(!isset($_SESSION['dil'])){
+    Global $dil;
+    $dil = "tr";
+    include "header.php";
+}elseif($_SESSION['dil'] == "tr"){
+    Global $dil;
+    $dil = "tr";
+    include "header.php";
+}elseif ($_SESSION['dil'] == "en"){
+    Global $dil;
+    $dil = "en";
+    include "header_en.php";
+}?>
 
 
 <div id="background" data-bgimage="url(resim/slider/collesium-slide-hakkimizda.jpg) fixed"></div>
@@ -55,11 +69,18 @@
 
                 <div class="col-lg-6 wow fadeIn">
                     <div class="padding20">
-                        <h2 class="title mb10">HAKKIMIZDA
+                        <h2 class="title mb10"><?php
+                            if($_SESSION['dil'] == "tr"){
+                                echo "Hakkımızda";
+                            }elseif($_SESSION['dil'] = "en"){
+                                echo "About Us";
+                            }
+                            ?>
                             <span class="small-border"></span>
                         </h2>
 
-                        <p>Collesium Mall , Türkiye’ de tekstil sektörünün kalbi nitelendirilen İstanbul Merter de
+                        <?php if($_SESSION['dil'] == "tr"){
+                            echo "<p>Collesium Mall , Türkiye’ de tekstil sektörünün kalbi nitelendirilen İstanbul Merter de
                             modern hayatın tüm tekstil ihtiyaçlarını bulabileceğiniz rahat bir ortam sunan alışveriş
                             merkezidir.
 
@@ -77,7 +98,28 @@
                             altında giderebilmesini sağlamaktadır. Metro ve metrobüse 1 kilometre, Atatürk Havalimanına
                             5 kilometre ulaşım mesafesinde bulunan Collesium Mall hemen yakınında bulunan 1300 araçlık
                             açık/kapalı otopark ile tüm ziyaretçileri için kolay ulaşılabilir ve güvenli bir konumdadır.
-                        </p>
+                        </p>";
+                        }elseif($_SESSION['dil'] == "en"){
+                            echo "<p>Collesium Mall is located in Istanbul Merter, which is considered the heart of the textile industry in Turkey.
+                             shopping that offers a comfortable environment where you can find all the textile needs of modern life.
+                             is the center.
+
+                             Collesium Mall Management, due to being in the same location and sector for years.
+                             reflects its experience at all levels, from the construction phase to the layout. Modern
+                             architecture, social facility areas, all the needs of the visitors coming to shopping.
+                             It has been carefully designed so that they can meet from any point. Star Group subsidiary
+                             Collesium Mall is the largest and leading wholesale shopping mall not only in Turkey but also in Europe.
+                             As one of the centers, it started to accept its visitors on 01.08.2018.
+                             Its grand opening was held on 30.04.2019 by distinguished names of the business world, celebrities, and official
+                             carried out with magnificent events accompanied by the protocol. 2 separate entrances, 7 floors of stores
+                             area, 2 floors of warehouse space and 13.500 m2 usable area and more than 150
+                             Collesium Mall with its store, World Cuisine Tastes, Turkish Cuisine Tastes and 1
+                             including the foreign exchange office, to meet all the needs of its visitors under one roof.
+                             provides under. 1 kilometer to metro and metrobus, to Atatürk Airport
+                             Located in the immediate vicinity of the Collesium Mall, which is 5 kilometers away, it has a capacity of 1300 vehicles.
+                             It is in an easily accessible and safe location for all its visitors with its indoor/outdoor parking lot.</p>";
+                        } ?>
+
 
 <!--                        <a href="02-room-2-cols.html" class="btn-line"><span>Choose Room</span>s</a>-->
 

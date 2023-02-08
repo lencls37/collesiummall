@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
 <div class="container" style="padding-top: 50px;">
     <div class="row">
         <div class="col-12 col-sm-12 col-lg-12 col-md-12 col-xl-12">
-            <form id="magaza_ekle_form" enctype="multipart/form-data" method="post" action="/admin/api/magaza_ekle.php">
+            <form id="magaza_ekle_form" enctype="multipart/form-data" method="post" action="/admin/api/magaza_duzenle.php">
                 <div class="container">
                     <div class="row">
                         <div class="col-6">
@@ -211,7 +211,7 @@ if (isset($_GET['id'])) {
                                        placeholder="Açıklama" style="margin-top: 20px;">
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="store-address">KONSEPT YAZISI</label>
                                 <textarea class="form-control" id="konsept_yazi" name="konsept_yazi"
@@ -219,6 +219,18 @@ if (isset($_GET['id'])) {
                                         echo $veri['konsept_yazi'];
                                     } ?></textarea>
                             </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="store-address">KONSEPT YAZISI İngilizce</label>
+                                <textarea class="form-control" id="konsept_yazi_en" name="konsept_yazi_en"
+                                          rows="6"><?php if ($veri['konsept_yazi_en'] != NULL) {
+                                        echo $veri['konsept_yazi_en'];
+                                    } ?></textarea>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="text" name="id" id="id" <?php echo 'value="'.$_GET['id'].'"';?> style="display: none">
                         </div>
                         <div class="col-12" style="margin-bottom: 50px;">
                             <button type="submit" class="btn btn-dark btn-lg">Mağazayı Güncelle</button>

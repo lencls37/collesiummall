@@ -38,7 +38,21 @@ try {
 
 <body class="has-menu-bar">
 
-<?php include "header.php" ?>
+<?php
+session_start();
+if(!isset($_SESSION['dil'])){
+    Global $dil;
+    $dil = "tr";
+    include "header.php";
+}elseif($_SESSION['dil'] == "tr"){
+    Global $dil;
+    $dil = "tr";
+    include "header.php";
+}elseif ($_SESSION['dil'] == "en"){
+    Global $dil;
+    $dil = "en";
+    include "header_en.php";
+}?>
 
 <div id="background" data-bgimage="url(resim/kat/collesiummall-Kat-2.jpg) fixed"></div>
 <div class='slider-overlay' style="position: fixed !important;top: 0; left: 0;"></div>
@@ -50,7 +64,13 @@ try {
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h4>Collesium</h4>
-                    <h1>Kat -2</h1>
+                    <?php
+                    if($_SESSION['dil'] == "tr"){
+                        echo " <h1>Kat -2</h1>";
+                    }elseif($_SESSION['dil'] == "en"){
+                        echo " <h1>Floor -2</h1>";
+                    }
+                    ?>
                 </div>
             </div>
         </div>

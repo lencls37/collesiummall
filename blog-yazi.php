@@ -17,6 +17,7 @@ if(!isset($_GET['id'])){
 }
 
 
+
 //?>
 
 <!DOCTYPE html>
@@ -43,7 +44,21 @@ if(!isset($_GET['id'])){
 
 <body class="has-menu-bar">
 
-<?php include "header.php" ?>
+<?php
+session_start();
+if(!isset($_SESSION['dil'])){
+    Global $dil;
+    $dil = "tr";
+    include "header.php";
+}elseif($_SESSION['dil'] == "tr"){
+    Global $dil;
+    $dil = "tr";
+    include "header.php";
+}elseif ($_SESSION['dil'] == "en"){
+    Global $dil;
+    $dil = "en";
+    include "header_en.php";
+}?>
 
 <div id="background" data-bgimage="url(resim/blog/collesiummall-blog.jpg) fixed"></div>
 <div class='slider-overlay' style="position: fixed !important;top: 0; left: 0;"></div>
@@ -55,7 +70,13 @@ if(!isset($_GET['id'])){
         <div class="container">
             <div class="row">
                 <div class="col-md-10 offset-md-1 mt-4 text-center">
-                    <h1><?php echo $result['baslik']; ?></h1>
+                    <h1><?php
+                        if($_SESSION['dil'] == "tr"){
+                            echo $result['baslik'];
+                        }else if($_SESSION['dil'] == "en"){
+                            echo $result['baslik_en'];
+                        }
+                         ?></h1>
                 </div>
             </div>
         </div>
@@ -69,12 +90,27 @@ if(!isset($_GET['id'])){
                         <div class="post-content">
 
                             <div class="post-text">
-                                <?php echo $result['html_yazi']; ?>
+                                <?php if($_SESSION['dil'] == "tr"){
+                                    echo $result['html_yazi'];
+                                }else if($_SESSION['dil'] == "en"){
+                                    echo $result['html_yazi_en'];
+                                }
+                                if(!empty($result['youtube'])){
+                                    echo '<iframe width="100%" height="600px" src="'.$result['youtube'].'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>';
+                                }
+                                ?>
+
                             </div>
                         </div>
 
                         <div class="post-meta"><span><i class="fa fa-user id-color"></i>By: <a
-                                        href="#">Collesium Mall</a></span> <span><i class="fa fa-tag id-color"></i><?php echo $result['etiket'];?></span> <span><i
+                                        href="#">Collesium Mall</a></span> <span><i class="fa fa-tag id-color"></i><?php
+                                if($_SESSION['dil'] == "tr"){
+                                    echo $result['etiket'];
+                                }elseif($_SESSION['dil'] == "en"){
+                                    echo $result['etiket_en'];
+                                }
+                                ?></span> <span><i
 
                         <div class="spacer-single"></div>
                     </div>

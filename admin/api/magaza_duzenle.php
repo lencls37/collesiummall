@@ -11,6 +11,8 @@ if (!isset($_POST['magaza_adi'])) {
 include "../../db/database.php";
 $db = new Database();
 $db->connect();
+$db->query("SET CHARSET 'utf8'");
+
 function url_make($str)
 {
     $before = array('ı', 'ğ', 'ü', 'ş', 'ö', 'ç', 'İ', 'Ğ', 'Ü', 'Ö', 'Ç'); // , '\'', '""'
@@ -40,7 +42,10 @@ $youtube_url = !empty($_POST['youtube_url']) ? $_POST['youtube_url']: null;
 $youtube_kullanici_adi = !empty($_POST['youtube_kullanici_adi']) ? $_POST['youtube_kullanici_adi']: null;
 $mail = !empty($_POST['mail']) ? $_POST['mail']: null;
 $website = !empty($_POST['website']) ? $_POST['website']: null;
-$konsept_yazi = !empty($_POST['konsept_yazisi']) ? $_POST['konsept_yazisi']: null;
+$konsept_yazi = !empty($_POST['konsept_yazi']) ? $_POST['konsept_yazi']: null;
+$konsept_yazi_en = !empty($_POST['konsept_yazi_en']) ? $_POST['konsept_yazi_en']: null;
+$id = !empty($_POST['id']) ? $_POST['id']: null;
+
 try {
     $arr = Array('magaza_adi'=> $magaza_adi,
         'instagram_url'=> "https://www.instagram.com/" . $instagram_kullanici_adi,
@@ -60,14 +65,16 @@ try {
         'youtube_kullanici_adi'=> $youtube_kullanici_adi,
         'mail'=> $mail,
         'website'=> $website,
-        'konsept_yazi'=> $konsept_yazi);
+        'konsept_yazi'=> $konsept_yazi,
+        'konsept_yazi_en'=> $konsept_yazi_en);
 
     global $sayi, $dosya;
     $dosya = null;
 
     //SLİDER RESİMLERİ
     for ($i = 0; $i <= 11; $i++) {
-        if (isset($_FILES['slider_img_1']['name'][$i])) {
+        if (isset($_FILES['slider_img_1'][$i]) && $_FILES['slider_img_1'][$i]['error'] === UPLOAD_ERR_OK && $_FILES['slider_img_1'][$i]['size'] > 0) {
+//             if (isset($_FILES['slider_img_1']['name'][$i])) {
             $dosya = $_FILES['slider_img_1'];
             $dosya_ismi = $dosya['name'][$i];
             $temp_isim = $dosya['tmp_name'][$i];
@@ -92,14 +99,12 @@ try {
                     }
                 }
             }
-        } else {
-            $dosya = null;
-            $arr['slider_img_' . strval($i+1)] = $dosya;
         }
     }
     //LOGO
     try{
-        if(isset($_FILES['logo']['name'])){
+        if (isset($_FILES['logo']) && $_FILES['logo']['error'] === UPLOAD_ERR_OK && $_FILES['logo']['size'] > 0) {
+//        if(isset($_FILES['logo']['name'])){
             $dosya = $_FILES['logo'];
             $dosya_ismi = $dosya['name'];
             $temp_isim = $dosya['tmp_name'];
@@ -134,12 +139,26 @@ try {
         $arr['logo'] = "Hata! : " . $e->getMessage();
     }
 
+    try{
+        $sonuc = $db->updatee("magaza", $arr,array('id'=>$id));
 
+        $response = array(
+            "status" => "success",
+            "message" => "Mağaza başarıyla güncellendi." . $id
+        );
+    }catch (Exception $e){
+        $response = array(
+            "status" => "error",
+            "message" => "Mağaza güncellenemedi!." . $e->getMessage()
+        );
+    }
     //ÇALIŞTIR
-    $db->insert("magaza",$arr);
+
     // Execute Statement
 
-    include "../sayfa/magaza_ekle_basarili.php";
+
+    header("Content-Type: text/html");
+    echo json_encode($response);
 } catch (PDOException $e) {
     $response = array(
         "status" => "error",

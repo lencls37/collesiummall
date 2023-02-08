@@ -18,10 +18,16 @@ if(!isset($_GET['id'])){
             <form id="form">
                 <div class="container">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-3">
                             <div class="form-group">
                                 <label for="store-name">Yazı Başlığı</label>
                                 <input type="text" class="form-control" id="baslik" name="baslik" required <?php echo 'value="'. $veri['baslik'].'"';?>>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="store-name">Yazı Başlığı En</label>
+                                <input type="text" class="form-control" id="baslik_en" name="baslik_en" required <?php echo 'value="'. $veri['baslik_en'].'"';?>>
                             </div>
                         </div>
                         <div class="col-6">
@@ -38,8 +44,26 @@ if(!isset($_GET['id'])){
                         </div>
                         <div class="col-12">
                             <div class="form-group">
+                                <label for="store-name">Yazı İçeriği EN</label>
+                                <div id="editor_en"><?php echo $veri['html_yazi_en']?></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
                                 <label for="hash">Etiketler</label>
                                 <input type="text" class="form-control" id="etiket" name="etiket" required placeholder="Virgülle ayırınız.." <?php echo 'value="'.$veri['etiket'].'"'?>>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="hash">Etiketler En</label>
+                                <input type="text" class="form-control" id="etiket_en" name="etiket_en" required placeholder="Virgülle ayırınız.." <?php echo 'value="'.$veri['etiket_en'].'"'?>>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="hash">Youtube Embed</label>
+                                <input type="text" class="form-control" id="youtube" name="youtube" placeholder="https://www.youtube.com/embed/7ZyX6uxitKI" <?php echo 'value="'.$veri['youtube'].'"'?>>
                             </div>
                         </div>
                         <div class="col-12 text-center">
@@ -54,6 +78,23 @@ if(!isset($_GET['id'])){
                 </div>
             </form>
         </div>
+        <div class="col-12 col-lg-12 col-sm-12 col-xl-12 col-md-12">
+            <form action="api/blog_resim_update.php" method="post" enctype="multipart/form-data">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="hash">Blog resmi (Değişmeyecekse Seçmeyin!)</label>
+                        <input type="file" id="bg" name="bg">
+                        <div id="output"></div>
+                    </div>
+                </div>
+                <div class="form-group" style="display:none;"><input type="text" id="id" name="id" <?php echo 'value="' . $_GET['id'] . '"';?>></div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Yükle</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -62,6 +103,21 @@ if(!isset($_GET['id'])){
 
 <!-- Initialize Quill editor -->
 <script>
+    $('#resim').on('change', function() {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 2) {
+            alert("Dosya Boyutu Maks 2 MB arası olmalıdır.");
+            $("#output").html('<b>' +
+                'Dosya Boyutu: ' + size + " KB" + '</b>');
+        } else {
+            $("#output").html('<b>' +
+                'Dosya Boyutu: ' + size + " KB" + '</b>');
+        }
+    });
+
     var toolbarOptions = [
         ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
         ['blockquote', 'code-block'],
@@ -90,23 +146,38 @@ if(!isset($_GET['id'])){
         theme: 'snow'
     });
 
+    var quill_en = new Quill('#editor_en', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+
     const form = document.getElementById("form");
     form.addEventListener("submit", function(event) {
         event.preventDefault();
+        let etiket = document.getElementById('etiket').value;
+        let etiket_en = document.getElementById('etiket_en').value;
         let baslik = document.querySelector('#baslik').value;
+        let baslik_en = document.querySelector('#baslik_en').value;
         let tarih = document.querySelector('#tarih').value;
         let content = quill.root.innerHTML;
+        let content_En = quill_en.root.innerHTML;
         let id = document.getElementById("id").innerText;
-        let etiket = document.getElementById('etiket').value;
+        let youtube = document.getElementById("youtube").value;
         $.ajax({
             type: 'POST',
             url: 'api/yazi_duzenle.php',
             data:{
                 baslik: baslik,
+                baslik_en: baslik_en,
                 tarih: tarih,
                 html_yazi: content,
-                id: id,
-                etiket: etiket
+                html_yazi_en: content_En,
+                etiket: etiket,
+                etiket_en: etiket_en,
+                youtube: youtube,
+                id: id
             },
             success: function (data){
                 let goster = $('#basarili');

@@ -280,6 +280,52 @@ class Database
 
     /**
      * @param $table
+     * @param $values
+     * @param $where
+     * @return mixed
+     *
+     * Veri düzenleme fonksiyonu
+     */
+    public function updatee($table, $values, $where)
+    {
+        try {
+            $values_string = "";
+            $value_count = 0;
+            foreach ($values as $key => $value) {
+                if ($value_count == 0) {
+                    $values_string = $key . ' = :' . $key;
+                } else {
+                    $values_string = $values_string . ', ' . $key . ' = :' . $key;
+                }
+                $value_count++;
+            }
+            $where_string = "";
+            $where_count = 0;
+            foreach ($where as $key => $value) {
+                if ($where_count == 0) {
+                    $where_string = ' WHERE ' . $key . ' = :' . $key;
+                } else {
+                    $where_string = $where_string . ' AND ' . $key . ' = :' . $key;
+                }
+                $where_count++;
+            }
+            $query_string = 'UPDATE ' . $table . ' SET ' . $values_string . $where_string . '';
+            $query = $this->connect()->prepare($query_string);
+            foreach ($values as $key => &$value) {
+                $query->bindParam(':' . $key, $value);
+            }
+            foreach ($where as $key => &$value) {
+                $query->bindParam(':' . $key, $value);
+            }
+            $query->execute();
+            return $query->rowCount();
+        } catch (PDOException $e) {
+            trigger_error('Wrong SQL: ' . $query_string . ' Error: ' . $e->getMessage(), E_USER_ERROR);
+        }
+    }
+
+    /**
+     * @param $table
      * @param $where
      * @return mixed
      *

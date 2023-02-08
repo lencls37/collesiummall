@@ -1,3 +1,18 @@
+<?php
+if (isset($_GET['dil'])) {
+    if ($_GET['dil'] === "tr") {
+        session_start();
+        $_SESSION['dil'] = "tr";
+    } elseif ($_GET['dil'] === "en") {
+        session_start();
+        $_SESSION['dil'] = "en";
+    } else {
+        session_start();
+        $_SESSION['dil'] = "tr";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -27,7 +42,21 @@
 <body class="has-menu-bar">
 
 
-<?php include "header.php" ?>
+<?php
+session_start();
+if (!isset($_SESSION['dil'])) {
+    global $dil;
+    $dil = "tr";
+    include "header.php";
+} elseif ($_SESSION['dil'] == "tr") {
+    global $dil;
+    $dil = "tr";
+    include "header.php";
+} elseif ($_SESSION['dil'] == "en") {
+    global $dil;
+    $dil = "en";
+    include "header_en.php";
+} ?>
 
 <div class='slider-overlay'></div>
 
@@ -81,21 +110,68 @@
         var slides = [];
         slides.push({
             image: 'resim/slider/collesium-slide-magazalar.jpg',
-            title: "<div class='slider-text'><h3 class='bg wow fadeInUp' data-wow-delay='.5s'>Mağazalar</h3><h4 class='bg wow fadeInUp' data-wow-delay='.8s'>Mağazalarımızı inceleyin ve detaylı bilgi alın.</h4><a class='btn-line wow fadeInUp' data-wow-delay='1s' href='magazalar.php'><span>Mağazalar</span></a></div>",
+            title: "<div class='slider-text'><h3 class='bg wow fadeInUp' data-wow-delay='.5s'><?php
+                if ($_SESSION['dil'] == "tr") {
+                    echo "Mağazalar";
+                } elseif ($_SESSION['dil'] == "en") {
+                    echo "Stores";
+                }
+                ?></h3><h4 class='bg wow fadeInUp' data-wow-delay='.8s'><?php
+                if ($_SESSION['dil'] == "tr") {
+                    echo "Mağazalarımızı inceleyin ve detaylı bilgi alın.";
+                } elseif ($_SESSION['dil'] == "en") {
+                    echo "Check out our stores and get detailed information.";
+                }
+                ?></h4><a class='btn-line wow fadeInUp' data-wow-delay='1s' href='magazalar.php'><span><?php
+                if ($_SESSION['dil'] == "tr") {
+                    echo "Mağazalar";
+                } elseif ($_SESSION['dil'] == "en") {
+                    echo "Stores";
+                }
+                ?></span></a></div>",
             thumb: '',
             url: ''
         });
 
+
         slides.push({
             image: 'resim/slider/collesium-slide-sosyalmedya.jpg',
-            title: "<div class='slider-text'><h3 class='bg wow fadeInUp' data-wow-delay='.5s'>Sosyal Medyada bizi takip edin</h3><h4 class='bg wow fadeInUp' data-wow-delay='.8s'>En güncel bilgilere erken erişmek için bizi sosyal medyada takip edin.</h4><a href='https://www.facebook.com/collesiummallmerter/' style='margin: 20px;'><i class='fa fa-facebook fa-lg'></i></a><a href='https://twitter.com/collesium_mall/' style='margin: 20px;'><i class='fa fa-twitter fa-lg'></i></a><a href='https://www.instagram.com/collesiummallmerter/' style='margin: 20px;'><i class='fa fa-instagram fa-lg'></i></a></div>",
+            title: "<div class='slider-text'><h3 class='bg wow fadeInUp' data-wow-delay='.5s'><?php
+                if ($_SESSION['dil'] == "tr") {
+                    echo "Sosyal Medyada bizi takip edin";
+                } elseif ($_SESSION['dil'] == "en") {
+                    echo "Follow Us on social media";
+                }?></h3><h4 class='bg wow fadeInUp' data-wow-delay='.8s'><?php
+                if ($_SESSION['dil'] == "tr") {
+                    echo "En güncel bilgilere erken erişmek için bizi sosyal medyada takip edin";
+                } elseif ($_SESSION['dil'] == "en") {
+                    echo "Follow us on social media for newest news.";
+                }?></h4><a href='https://www.facebook.com/collesiummallmerter/' style='margin: 20px;'><i class='fa fa-facebook fa-lg'></i></a><a href='https://twitter.com/collesium_mall/' style='margin: 20px;'><i class='fa fa-twitter fa-lg'></i></a><a href='https://www.instagram.com/collesiummallmerter/' style='margin: 20px;'><i class='fa fa-instagram fa-lg'></i></a></div>",
             thumb: '',
             url: ''
         });
 
         slides.push({
             image: 'resim/slider/collesium-slide-hakkimizda.jpg',
-            title: "<div class='slider-text'><h3 class='bg wow fadeInUp' data-wow-delay='.5s'>Hakkımızda</h3><h4 class='bg wow fadeInUp' data-wow-delay='.8s'>Hakkımızda detaylı bilgi için sayfayı ziyaret edin.</h4><a class='btn-line wow fadeInUp' data-wow-delay='1s' href='hakkimizda.php'><span>Hakkımızda</span></a></div>",
+            title: "<div class='slider-text'><h3 class='bg wow fadeInUp' data-wow-delay='.5s'><?php
+                if($_SESSION['dil'] == "tr"){
+                    echo "Hakkımızda";
+                }elseif($_SESSION['dil']){
+                    echo "About Us";
+                }
+                ?></h3><h4 class='bg wow fadeInUp' data-wow-delay='.8s'><?php
+                if($_SESSION['dil'] == "tr"){
+                    echo "Hakkımızda detaylı bilgi için sayfayı ziyaret edin.";
+                }elseif($_SESSION['dil']){
+                    echo "For more information take a look about us page.";
+                }
+                ?></h4><a class='btn-line wow fadeInUp' data-wow-delay='1s' href='hakkimizda.php'><span><?php
+                if($_SESSION['dil'] == "tr"){
+                    echo "Hakkımızda";
+                }elseif($_SESSION['dil']){
+                    echo "About us";
+                }
+                ?></span></a></div>",
             thumb: '',
             url: ''
         });

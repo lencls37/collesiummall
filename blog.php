@@ -42,7 +42,21 @@ try {
 
 <body class="has-menu-bar">
 
-<?php include "header.php" ?>
+<?php
+session_start();
+if(!isset($_SESSION['dil'])){
+    Global $dil;
+    $dil = "tr";
+    include "header.php";
+}elseif($_SESSION['dil'] == "tr"){
+    Global $dil;
+    $dil = "tr";
+    include "header.php";
+}elseif ($_SESSION['dil'] == "en"){
+    Global $dil;
+    $dil = "en";
+    include "header_en.php";
+}?>
 
 <div id="background" data-bgimage="url(resim/blog/collesiummall-blog.jpg) fixed"></div>
 <div class='slider-overlay' style="position: fixed !important;top: 0; left: 0;"></div>
@@ -65,8 +79,14 @@ try {
             <div class="row g-4">
 
                 <?php
-
                 foreach ($result as $item) {
+
+                    Global $yazi;
+                    if($_SESSION['dil'] == "tr"){
+                        $yazi = substr(strip_tags($item['html_yazi']),0,60);
+                    }elseif($_SESSION['dil'] == "en"){
+                        $yazi = substr(strip_tags($item['html_yazi_en']),0,60);
+                    }
                     echo '<div class="col-lg-4 col-md-6">
                     <div class="d-items">
                         <div class="card-image-1 mod-b">
@@ -74,69 +94,19 @@ try {
                                 <div class="d-inner">
                                     <span class="atr-date">'.$item['tarih'].'</span>
                                     <h3>'.$item['baslik'].'</h3>
-                                    <p>'.substr(strip_tags($item['html_yazi']),0,60).'...</p>
+                                    
+                                    <p>'.$yazi.'...</p>
+                                    
                                     <h5 class="d-tag">BLOG</h5>
                                 </div>
                             </a>
-                            <img src="https://www.collesiummall.com/images/about/i06.jpg" class="img-fluid" alt="" style="width: 390px;height: 390px;object-fit: cover;">
+                            <img src="'.$item['resim'].'" class="img-fluid" alt="" style="width: 390px;height: 390px;object-fit: cover;">
                         </div>
                     </div>
                 </div>';
                 }
 
                 ?>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="d-items">
-                        <div class="card-image-1 mod-b">
-                            <a href="buyuk-iftar.php" class="d-text">
-                                <div class="d-inner">
-                                    <span class="atr-date">23.05.2019</span>
-                                    <h3>BÜYÜK İFTAR DAVETİ</h3>
-                                    <p>Star Group ortaklarının Perşembe Günü Gülsever sokakta gerçekleştirdiği iftara
-                                        katılımda bulunan herkese bizi onurlandırdığı için teşekkür ederiz.</p>
-                                    <h5 class="d-tag">BLOG</h5>
-                                </div>
-                            </a>
-                            <img src="https://www.collesiummall.com/images/about/i06.jpg" class="img-fluid" alt="" style="width: 390px;height: 390px;object-fit: cover;">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="d-items">
-                        <div class="card-image-1 mod-b">
-                            <a href="collesium-mall-acilis-galasi.php" class="d-text">
-                                <div class="d-inner">
-                                    <span class="atr-date">30.04.2019</span>
-                                    <h3>COLLESIUM MALL - AÇILIŞ GALASI</h3>
-                                    <p></p>
-                                    <h5 class="d-tag">BLOG</h5>
-                                </div>
-                            </a>
-                            <img src="https://www.collesiummall.com/images/about/a01.jpg" class="img-fluid" alt="" style="width: 390px;height: 390px;object-fit: cover;">
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="d-items">
-                        <div class="card-image-1 mod-b">
-                            <a href="buyuk-acilis-defilesi.php" class="d-text">
-                                <div class="d-inner">
-                                    <span class="atr-date">01.08.2018</span>
-                                    <h3>BÜYÜK AÇILIŞ DEFİLESİ - CASTING</h3>
-                                    <p>Büyük açılış defilesi için casting çalışmalarının, Yönetim Kurulu üyelerimizden
-                                        Hüseyin Kazıkkaya ve Halil Kasap birlikte bizzat gerçekleştirdi.
-                                    </p>
-                                    <h5 class="d-tag">BLOG</h5>
-                                </div>
-                            </a>
-                            <img src="https://www.collesiummall.com/images/about/d08.jpg" class="img-fluid" alt="" style="width: 390px;height: 390px;object-fit: cover;">
-                        </div>
-                    </div>
-                </div>
 
                 <div class="clearfix"></div>
 

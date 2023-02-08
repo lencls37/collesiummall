@@ -45,6 +45,7 @@ if (empty($_GET['id'])) {
     $facebook_url = $magazalar[0]['facebook_url'];
     $facebook_kullanici_adi = $magazalar[0]['facebook_kullanici_adi'];
     $kat_ve_no = "Kat ".$magazalar[0]['kat'] . " No: ".$magazalar[0]['no'];
+    $kat_ve_no_en = "Floor ".$magazalar[0]['kat'] . " No: ".$magazalar[0]['no'];
     $logo = $magazalar[0]['logo'];
     $telefon = $magazalar[0]['telefon'];
     $whatsapp_numara = $magazalar[0]['whatsapp_numara'];
@@ -58,6 +59,7 @@ if (empty($_GET['id'])) {
     $youtube_kullanici_adi = $magazalar[0]['youtube_kullanici_adi'];
     $youtube_url = $magazalar[0]['youtube_url'];
     $konsept = $magazalar[0]['konsept_yazi'];
+    $konsept_en = $magazalar[0]['konsept_yazi_en'];
     $instagram_kullanici_adi = $magazalar[0]['instagram_kullanici_adi'];
     $instagram_url = $magazalar[0]['instagram_url'];
 
@@ -112,7 +114,20 @@ function resim_ekle($resimurl, $aciklama)
 
 <body class="has-menu-bar">
 
-<?php include "header.php"; ?>
+<?php
+Global $dil;
+session_start();
+if(!isset($_SESSION['dil'])){
+    $dil = "tr";
+    include "header.php";
+}elseif($_SESSION['dil'] == "tr"){
+    $dil = "tr";
+    include "header.php";
+}elseif ($_SESSION['dil'] == "en"){
+    $dil = "en";
+    include "header_en.php";
+}
+?>
 
 <div id="background" data-bgimage='url("images/fotolar/c-01.jpeg") fixed'></div>
 <div id="content-absolute">
@@ -169,16 +184,38 @@ function resim_ekle($resimurl, $aciklama)
                                         <a href="tel:<?php echo $telefon?>" class="link-light"><?php echo $telefon;?></a>
                                     </div>
                                     <div class="de-flex-col">
-                                        <a href="#" class="btn-main"><span><?php echo $kat_ve_no?></span></a>
+                                        <a href="#" class="btn-main"><span><?php
+                                                if($dil == "tr"){
+                                                    echo $kat_ve_no;
+                                                }elseif ($dil == "en"){
+                                                    echo $kat_ve_no_en;
+                                                }
+                                                ?></span></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <h3>KONSEPT</h3>
-                                <p><?php echo $konsept ?></p>
+                                <h3><?php
+                                    if($dil == "tr"){
+                                        echo "Konsept";
+                                    }elseif($dil == "en"){
+                                        echo "Concept";
+                                    }else{
+                                        echo "Konsept";
+                                    }?></h3>
+                                <p><?php if($dil == "tr"){
+                                        echo $konsept;
+                                    }elseif($dil == "en"){
+                                        echo $konsept_en;
+                                    }
+                                    ?></p>
                             </div>
                             <div class="col-md-4">
-                                <h3>Bağlantılar</h3>
+                                <h3><?php if($dil == "tr"){
+                                        echo "Bağlantılar";
+                                    }elseif($dil == "en"){
+                                        echo "Links";
+                                    }?></h3>
                                 <ul style="list-style: none;padding-left: 0 !important;" class="ul-style-2">
                                     <?php
                                     if(!empty($facebook_url) and  !empty($facebook_kullanici_adi)){

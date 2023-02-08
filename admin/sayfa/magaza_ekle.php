@@ -114,10 +114,17 @@
                                        multiple>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="store-address">KONSEPT YAZISI</label>
                                 <textarea class="form-control" id="konsept_yazisi" name="konsept_yazisi"
+                                          rows="6"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="store-address">KONSEPT YAZISI İngilizce</label>
+                                <textarea class="form-control" id="konsept_yazisi_en" name="konsept_yazisi_en"
                                           rows="6"></textarea>
                             </div>
                         </div>

@@ -22,7 +22,21 @@
 
 <body class="has-menu-bar">
 
-<?php include "header.php" ?>
+<?php
+session_start();
+if(!isset($_SESSION['dil'])){
+    Global $dil;
+    $dil = "tr";
+    include "header.php";
+}elseif($_SESSION['dil'] == "tr"){
+    Global $dil;
+    $dil = "tr";
+    include "header.php";
+}elseif ($_SESSION['dil'] == "en"){
+    Global $dil;
+    $dil = "en";
+    include "header_en.php";
+}?>
 
 <div id="background" data-bgimage="url(resim/konum/collesiummall-Konum.jpg) fixed"></div>
 <div class='slider-overlay' style="position: fixed !important;top: 0; left: 0;"></div>
@@ -35,7 +49,13 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h4>Collesium</h4>
-                    <h1>Konum</h1>
+                    <?php
+                    if($_SESSION['dil'] == "tr"){
+                        echo "<h1>Konum</h1>";
+                    }elseif($_SESSION['dil'] == "en"){
+                        echo "<h1>Location</h1>";
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -52,50 +72,97 @@
                                     <div class="col-lg-6">
                                         <h3>Collesium Mall</h3>
                                         <address>
-                                            <span><strong>Address:</strong>Mehmet Nesih Özmen, Mahallesi, Gülsever Sokağı No :17, 34173 Güngören/İstanbul</span>
-                                            <span><strong>Phone:</strong>+90 212 803 15 60</span>
-                                            <span><strong>Email:</strong><a href="mailto:info@collesiummall.com">info@collesiummall.com</a></span>
+                                            <?php
+                                            if($_SESSION['dil'] == "tr"){
+                                                echo "<span><strong>Adres:</strong>Mehmet Nesih Özmen, Mahallesi, Gülsever Sokağı No :17, 34173 Güngören/İstanbul</span>";
+                                                echo "<span><strong>Telefon:</strong>+90 212 803 15 60</span>";
+                                                echo '<span><strong>Email:</strong><a href="mailto:info@collesiummall.com">info@collesiummall.com</a></span>';
+                                            }elseif($_SESSION['dil']== "en"){
+                                                echo "<span><strong>Address:</strong>Mehmet Nesih Ozmen, District, Gulsever Street No:17, 34173 Gungoren/Istanbul</span>";
+                                                echo "<span><strong>Phone:</strong>+90 212 803 15 60</span>";
+                                                echo '<span><strong>Email:</strong><a href="mailto:info@collesiummall.com">info@collesiummall.com</a></span>';
+                                            }
+                                            ?>
                                         </address>
                                     </div>
                                 </div>
 
                                 <div class="spacer-single"></div>
 
-                                <form id='contact_form' method="post" action="">
+                                <form id='contact_form'>
                                     <div class="row">
                                         <div class="col-md-12 mb10">
-                                            <h3>Bize Mesaj Bırak</h3>
+                                            <?php
+                                            if($_SESSION['dil'] == "tr"){
+                                                echo "<h3>Bize Mesaj Bırak</h3>";
+                                            }elseif($_SESSION['dil']== "en"){
+                                                echo "<h3>Leave Us a Message</h3>";
+                                            }
+                                            ?>
                                         </div>
                                         <div class="col-md-6">
-                                            <div id='name_error' class='error'>Lütfen isminizi giriniz.</div>
+                                            <?php
+                                            if($_SESSION['dil'] == "tr"){
+                                                echo "<div id='name_error' class='error'>Lütfen isminizi giriniz.</div>";
+                                            }elseif($_SESSION['dil']== "en"){
+                                                echo "<div id='name_error' class='error'>Please enter your name.</div>";
+                                            }
+                                            ?>
+
                                             <div>
                                                 <input type='text' name='isim' id='name' class="form-control"
-                                                       placeholder="Adınız" required>
+                                                       placeholder="İsim/Name" required>
                                             </div>
 
-                                            <div id='email_error' class='error'>Lütfen doğru bir mail adresi giriniz.
-                                            </div>
+                                            <?php
+                                            if($_SESSION['dil'] == "tr"){
+                                                echo "<div id='email_error' class='error'>Lütfen doğru bir mail adresi giriniz.</div>";
+                                            }elseif($_SESSION['dil']== "en"){
+                                                echo "<div id='email_error' class='error'>Please enter a valid email.</div>";
+                                            }
+                                            ?>
+
                                             <div>
                                                 <input type='email' name='mail' id='email' class="form-control"
-                                                       placeholder="Mail adresiniz" required>
+                                                       placeholder="EMail" required>
                                             </div>
 
-                                            <div id='phone_error' class='error'>Lütfen numaranızı giriniz.</div>
+                                            <?php
+                                            if($_SESSION['dil'] == "tr"){
+                                                echo "<div id='phone_error' class='error'>Lütfen numaranızı giriniz.</div>";
+                                            }elseif($_SESSION['dil']== "en"){
+                                                echo "<div id='phone_error' class='error'>Please enter a valid phone number..</div>";
+                                            }
+                                            ?>
+
                                             <div>
                                                 <input type='text' name='telefon' id='phone' class="form-control"
-                                                       placeholder="Telefonunuz" required>
+                                                       placeholder="Telefonunuz/Phone" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div id='message_error' class='error'>Lütfen mesaj giriniz.</div>
+                                            <?php
+                                            if($_SESSION['dil'] == "tr"){
+                                                echo "<div id='message_error' class='error'>Lütfen mesaj giriniz.</div>";
+                                            }elseif($_SESSION['dil']== "en"){
+                                                echo "<div id='message_error' class='error'>Please enter message.</div>";
+                                            }
+                                            ?>
                                             <div>
                                                 <textarea name='mesaj' id='message' class="form-control"
-                                                          placeholder="Mesajınız" required></textarea>
+                                                          placeholder="Mesajınız/Message" required></textarea>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
-                                            <button class="btn btn-line" type="submit">Gönder</button>
+                                            <?php
+                                            if($_SESSION['dil'] == "tr"){
+                                                echo '<button class="btn btn-line" type="submit">Gönder</button>';
+                                            }elseif($_SESSION['dil']== "en"){
+                                                echo '<button class="btn btn-line" type="submit">Submit</button>';
+                                            }
+                                            ?>
+
                                         </div>
                                     </div>
                                 </form>
@@ -136,7 +203,6 @@
 <script>
     $(document).ready(function() {
         $('#contact_form').submit(function(e) {
-            console.log("Submit girdi");
             e.preventDefault();
             $.ajax({
                 type: 'POST',

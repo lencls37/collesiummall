@@ -22,7 +22,21 @@
 
     <body class="has-menu-bar">
 
-        <?php include "header.php"?>
+    <?php
+    session_start();
+    if(!isset($_SESSION['dil'])){
+        Global $dil;
+        $dil = "tr";
+        include "header.php";
+    }elseif($_SESSION['dil'] == "tr"){
+        Global $dil;
+        $dil = "tr";
+        include "header.php";
+    }elseif ($_SESSION['dil'] == "en"){
+        Global $dil;
+        $dil = "en";
+        include "header_en.php";
+    }?>
 
         <div id="background" data-bgimage="url(resim/slider/collesium-slide-magazalar.jpg) fixed"></div>
         <div class='slider-overlay' style="position: fixed !important;top: 0; left: 0;"></div>
